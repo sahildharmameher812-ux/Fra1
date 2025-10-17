@@ -39,8 +39,11 @@ function App() {
         <AuthProvider>
           <Router>
           <Routes>
-            {/* Public Route - Login */}
+            {/* Public Routes */}
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/maps" element={
+              <PublicMapsLayout />
+            } />
             
             {/* Protected Routes */}
             <Route path="/*" element={
@@ -159,6 +162,38 @@ const AppLayout = () => {
       
       {/* Chat Assistant Widget - Available on all pages */}
       <ChatWidget />
+    </Box>
+  );
+};
+
+// Public Maps Layout Component (No Authentication Required)
+const PublicMapsLayout = () => {
+  return (
+    <Box 
+      sx={{ 
+        display: 'flex', 
+        flexDirection: 'column',
+        minHeight: '100vh',
+        backgroundColor: '#FAFAFA'
+      }}
+    >
+      {/* Header */}
+      <Header />
+      
+      {/* Maps Content */}
+      <Box 
+        component="main" 
+        sx={{ 
+          flexGrow: 1,
+          mt: '64px', // Account for fixed header
+          minHeight: 'calc(100vh - 128px)' // Header + Footer space
+        }}
+      >
+        <WebGISMaps />
+      </Box>
+      
+      {/* Footer */}
+      <Footer />
     </Box>
   );
 };

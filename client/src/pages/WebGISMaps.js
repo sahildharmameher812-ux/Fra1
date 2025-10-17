@@ -57,6 +57,42 @@ L.Icon.Default.mergeOptions({
 
 const WebGISMaps = () => {
   const { t } = useLanguage();
+  // For public access, provide fallback for useLanguage
+  const tFallback = (key) => {
+    const translations = {
+      'mapView': 'Map View',
+      'satelliteView': 'Satellite View', 
+      'terrainView': 'Terrain View',
+      'zoomIn': 'Zoom In',
+      'zoomOut': 'Zoom Out',
+      'myLocation': 'My Location',
+      'fullScreen': 'Full Screen',
+      'status': 'Status',
+      'area': 'Area',
+      'hectares': 'hectares',
+      'claimant': 'Claimant',
+      'village': 'Village',
+      'district': 'District',
+      'submitted': 'Submitted',
+      'type': 'Type',
+      'coverage': 'Coverage',
+      'coordinates': 'Coordinates',
+      'totalLand': 'Total Land (Ha)',
+      'forestAreaHa': 'Forest Area (Ha)',
+      'fraClaimsStatus': 'FRA Claims Status',
+      'approvedClaims': 'Approved Claims',
+      'pendingClaims': 'Pending Claims',
+      'rejectedClaims': 'Rejected Claims',
+      'document': 'Document',
+      'applicants': 'Applicants', 
+      'locations': 'Locations',
+      'landUse': 'Land Use',
+      'forestCoverLabel': 'Forest Cover',
+      'submittedAt': 'Submitted At',
+      'by': 'By'
+    };
+    return t ? t(key) : (translations[key] || key);
+  };
   const [selectedState, setSelectedState] = useState('mp');
   const [selectedDistrict, setSelectedDistrict] = useState('all');
   const [mapType, setMapType] = useState(0); // 0: Normal, 1: Satellite, 2: Terrain
@@ -361,19 +397,19 @@ const WebGISMaps = () => {
   // Map type configurations
   const mapConfigs = [
     {
-      name: t('mapView'),
+      name: tFallback('mapView'),
       icon: <MapIcon />,
       tileUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       attribution: '© OpenStreetMap contributors',
     },
     {
-      name: t('satelliteView'),
+      name: tFallback('satelliteView'),
       icon: <Satellite />,
       tileUrl: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
       attribution: '© Esri — Source: Esri, Maxar, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community',
     },
     {
-      name: t('terrainView'),
+      name: tFallback('terrainView'),
       icon: <Terrain />,
       tileUrl: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
       attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)',
