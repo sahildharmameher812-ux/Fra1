@@ -2,9 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/node",
-      "config": { "includeFiles": ["uploads/**", "datasets/**", "*.html"] }
+      "src": "server.js",
+      "use": "@vercel/node"
     },
     {
       "src": "client/package.json",
@@ -42,10 +41,5 @@
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "server.js": {
-      "maxDuration": 30
-    }
   }
 }
