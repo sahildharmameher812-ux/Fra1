@@ -8,10 +8,10 @@
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "server": "node server.js",
     "client": "cd client && npm start",
-    "build": "npm run install-all && cd client && npm run build",
+    "build": "npm run install-all && cd client && CI=false npm run build",
     "install-all": "npm install && cd client && npm install",
     "dev:win": "concurrently --kill-others-on-fail \"npm run server\" \"timeout /t 5 && cd client && npm start\"",
-    "vercel-build": "npm run install-all && npm run build",
+    "vercel-build": "npm run install-all && cd client && CI=false npm run build",
     "postinstall": "cd client && npm install"
   },
   "dependencies": {
