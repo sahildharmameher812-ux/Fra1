@@ -19,24 +19,32 @@
       "dest": "/server.js"
     },
     {
-      "src": "/uploads/(.*)",
-      "dest": "/uploads/$1"
-    },
-    {
-      "src": "/datasets/(.*)",
-      "dest": "/datasets/$1"
-    },
-    {
-      "src": "/dashboard(.*)",
+      "src": "/dashboard",
       "dest": "/dashboard.html"
     },
     {
-      "src": "/chat(.*)",
+      "src": "/chat",
       "dest": "/chat.html"
     },
     {
-      "src": "/(.*)",
+      "src": "/static/(.*)",
+      "dest": "/client/build/static/$1"
+    },
+    {
+      "src": "/app",
       "dest": "/client/build/index.html"
+    },
+    {
+      "src": "/app/(.*)",
+      "dest": "/client/build/index.html"
+    },
+    {
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))",
+      "dest": "/client/build/$1"
+    },
+    {
+      "src": "/",
+      "dest": "/dashboard.html"
     }
   ],
   "env": {
