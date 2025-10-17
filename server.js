@@ -41,35 +41,9 @@ if (mongoUri) {
     });
 }
 
-// Security middleware - Configure helmet to allow map tiles
+// Security middleware - DISABLE Helmet CSP for Vercel (handled by _headers file)
 app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://unpkg.com"],
-      fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-      imgSrc: [
-        "'self'", 
-        "data:", 
-        "https:",
-        // Map tile providers
-        "https://*.tile.openstreetmap.org",
-        "https://server.arcgisonline.com",
-        "https://*.tile.opentopomap.org", 
-        "https://mt1.google.com",
-        "https://mt0.google.com",
-        "https://mt2.google.com",
-        "https://mt3.google.com",
-        "https://cdnjs.cloudflare.com"
-      ],
-      connectSrc: ["'self'", "https:", "wss:"],
-      frameSrc: ["'none'"],
-      objectSrc: ["'none'"],
-      mediaSrc: ["'self'"],
-      manifestSrc: ["'self'"]
-    },
-  },
+  contentSecurityPolicy: false,
   crossOriginEmbedderPolicy: false
 }));
 app.use(compression());
