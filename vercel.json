@@ -4,13 +4,6 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build"
-      }
     }
   ],
   "routes": [
@@ -19,35 +12,8 @@
       "dest": "/server.js"
     },
     {
-      "src": "/dashboard",
-      "dest": "/dashboard.html"
-    },
-    {
-      "src": "/chat",
-      "dest": "/chat.html"
-    },
-    {
-      "src": "/static/(.*)",
-      "dest": "/client/build/static/$1"
-    },
-    {
-      "src": "/app",
-      "dest": "/client/build/index.html"
-    },
-    {
-      "src": "/app/(.*)",
-      "dest": "/client/build/index.html"
-    },
-    {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))",
-      "dest": "/client/build/$1"
-    },
-    {
-      "src": "/",
-      "dest": "/dashboard.html"
+      "src": "/(.*)",
+      "dest": "/server.js"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
