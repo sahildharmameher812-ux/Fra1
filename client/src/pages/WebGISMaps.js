@@ -72,6 +72,8 @@ const WebGISMaps = () => {
   const [mapCenter, setMapCenter] = useState([23.2599, 77.4126]);
   const [mapZoom, setMapZoom] = useState(7);
   const [fraRecords, setFraRecords] = useState([]);
+  const [mapLoading, setMapLoading] = useState(true);
+  const [mapError, setMapError] = useState(false);
   const mapRef = useRef();
 
   // States and Districts Data
@@ -166,6 +168,9 @@ const WebGISMaps = () => {
     const fetchFraRecords = async () => {
       try {
         const response = await fetch('/api/fra-atlas/records');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         
         if (data.success) {
@@ -376,8 +381,8 @@ const WebGISMaps = () => {
     {
       name: '3D DETAILED VIEW',
       icon: <Nature />,
-      tileUrl: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
-      attribution: '© Google Maps - High-Res Satellite with Labels | Shows Buildings, Trees, Ponds, Lakes & Terrain',
+      tileUrl: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+      attribution: '© Google Maps Satellite | High-Resolution Imagery for Forest & Terrain Analysis',
     },
   ];
 
@@ -531,6 +536,29 @@ const WebGISMaps = () => {
             </Tooltip>
           </Box>
 
+          {/* Loading Overlay */}
+          {mapLoading && (
+            <Box sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              bgcolor: 'rgba(255,255,255,0.9)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1001,
+              flexDirection: 'column',
+              gap: 2
+            }}>
+              <Typography variant="h6" sx={{ color: governmentColors.primaryBlue, fontWeight: 600 }}>
+                🗺️ Loading Interactive Map...
+              </Typography>
+              <LinearProgress sx={{ width: 200, height: 6, borderRadius: 3 }} />
+            </Box>
+          )}
+          
           {/* Leaflet Map */}
           <MapContainer
             key={`${selectedState}-${selectedDistrict}-${mapType}`}
@@ -543,6 +571,9 @@ const WebGISMaps = () => {
             scrollWheelZoom={true}
             doubleClickZoom={true}
             zoomControl={true}
+            whenReady={() => {
+              setMapLoading(false);
+            }}
           >
             <TileLayer
               attribution={mapConfigs[mapType].attribution}
@@ -550,6 +581,16 @@ const WebGISMaps = () => {
               maxZoom={22}
               maxNativeZoom={mapType === 3 ? 22 : 19}
               minZoom={3}
+              onLoad={() => {
+                setMapLoading(false);
+                setMapError(false);
+              }}
+              onError={() => {
+                setMapError(true);
+                setMapLoading(false);
+                // Fallback to OpenStreetMap
+                console.warn('Map tile loading failed, falling back to OpenStreetMap');
+              }}
             />
             
             {/* Render markers based on active layers */}
