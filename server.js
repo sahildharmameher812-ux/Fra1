@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 const path = require('path');
 const mongoose = require('mongoose');
+const fetch = require('node-fetch');
 require('dotenv').config();
 
 // Import routes (using simple versions for demo)
@@ -91,6 +92,60 @@ app.use('/api/claims', claimsRoutes);
 app.use('/api/decision-support', decisionSupportRoutes);
 app.use('/api/fra-atlas', fraAtlasRoutes);
 app.use('/api/chat', chatAssistantRoutes);
+
+// Tile Proxy - serves map tiles as same-origin to satisfy strict CSP
+// Examples:
+//  /api/tiles/osm/{z}/{x}/{y}.png
+//  /api/tiles/opentopo/{z}/{x}/{y}.png
+//  /api/tiles/esri/{z}/{x}/{y}.jpg   (note Esri flips x/y)
+//  /api/tiles/google/:lyrs/{z}/{x}/{y}.png  (lyrs: s= satellite, y = hybrid)
+app.get('/api/tiles/:provider/:layer?/:z/:x/:y.:ext', async (req, res) => {
+  try {
+    const { provider, layer, z, x, y, ext } = req.params;
+    let upstream;
+
+    switch (provider) {
+      case 'osm': {
+        const subs = ['a', 'b', 'c'];
+        const s = subs[Math.floor(Math.random() * subs.length)];
+        upstream = `https://${s}.tile.openstreetmap.org/${z}/${x}/${y}.png`;
+        break;
+      }
+      case 'opentopo': {
+        const subs = ['a', 'b', 'c'];
+        const s = subs[Math.floor(Math.random() * subs.length)];
+        upstream = `https://${s}.tile.opentopomap.org/${z}/${x}/${y}.png`;
+        break;
+      }
+      case 'esri': {
+        upstream = `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${z}/${y}/${x}`;
+        break;
+      }
+      case 'google': {
+        const lyrs = layer === 'y' ? 'y' : 's';
+        upstream = `https://mt1.google.com/vt/lyrs=${lyrs}&z=${z}&x=${x}&y=${y}`;
+        break;
+      }
+      default:
+        return res.status(400).json({ message: 'Unknown tile provider' });
+    }
+
+    const upstreamRes = await fetch(upstream, { headers: { 'User-Agent': 'FRA-Atlas/1.0' } });
+    if (!upstreamRes.ok) {
+      return res.status(upstreamRes.status).send('Upstream error');
+    }
+
+    const ct = upstreamRes.headers.get('content-type') || (ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' : 'image/png');
+    res.set('Content-Type', ct);
+    res.set('Cache-Control', 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800');
+
+    const buf = Buffer.from(await upstreamRes.arrayBuffer());
+    return res.status(200).end(buf);
+  } catch (err) {
+    console.error('Tile proxy error', err);
+    return res.status(500).send('Tile proxy error');
+  }
+});
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
