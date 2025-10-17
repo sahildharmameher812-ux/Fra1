@@ -62,16 +62,12 @@ app.use('/datasets', express.static(path.join(__dirname, 'datasets')));
 // Serve static HTML files (including dashboard.html)
 app.use(express.static(path.join(__dirname)));
 
-// Dashboard routes
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dashboard.html'));
-});
-
-app.get('/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dashboard.html'));
-});
-
+// Legacy dashboard route (keep for backward compatibility)
 app.get('/dashboard.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dashboard.html'));
+});
+
+app.get('/legacy', (req, res) => {
   res.sendFile(path.join(__dirname, 'dashboard.html'));
 });
 
@@ -101,17 +97,31 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Serve React app in production (but keep dashboard routes accessible)
+// Serve React app in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')));
   
-  // Only catch remaining routes, not dashboard routes
-  app.get('/app/*', (req, res) => {
+  // Catch all remaining routes and serve React app
+  app.get('*', (req, res) => {
+    // Don't serve React for API routes
+    if (req.path.startsWith('/api/')) {
+      return res.status(404).json({ message: 'API route not found' });
+    }
+    // Don't serve React for legacy dashboard
+    if (req.path === '/dashboard.html' || req.path === '/legacy') {
+      return res.sendFile(path.join(__dirname, 'dashboard.html'));
+    }
+    // Serve React app for all other routes
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 } else {
-  // In development, serve React app on different routes
-  app.use('/app', express.static(path.join(__dirname, 'client/build')));
+  // In development, serve React app
+  app.use(express.static(path.join(__dirname, 'client/build')));
+  app.get('*', (req, res) => {
+    if (!req.path.startsWith('/api/') && req.path !== '/dashboard.html' && req.path !== '/legacy') {
+      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    }
+  });
 }
 
 // Error handling middleware
@@ -121,11 +131,6 @@ app.use((err, req, res, next) => {
     message: 'Something went wrong!',
     error: process.env.NODE_ENV === 'development' ? err.message : 'Internal Server Error'
   });
-});
-
-// 404 handler
-app.use('*', (req, res) => {
-  res.status(404).json({ message: 'Route not found' });
 });
 
 // Start server
