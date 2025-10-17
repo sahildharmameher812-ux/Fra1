@@ -405,8 +405,8 @@ const WebGISMaps = () => {
     {
       name: tFallback('satelliteView'),
       icon: <Satellite />,
-      tileUrl: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
-      attribution: '© Google Maps Satellite | High-Resolution Imagery',
+      tileUrl: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      attribution: '© Esri — Source: Esri, Maxar, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community',
     },
     {
       name: tFallback('terrainView'),
