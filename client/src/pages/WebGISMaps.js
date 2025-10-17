@@ -411,8 +411,8 @@ const WebGISMaps = () => {
     {
       name: tFallback('terrainView'),
       icon: <Terrain />,
-      tileUrl: 'https://mt1.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',
-      attribution: '© Google Maps Terrain | Topographic with Labels',
+      tileUrl: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+      attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)',
     },
     {
       name: '3D DETAILED VIEW',
