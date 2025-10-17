@@ -40,7 +40,7 @@ import {
   Refresh,
   Nature,
 } from '@mui/icons-material';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 // Removed unused imports: motion, AnimatePresence
 import { governmentColors } from '../theme/governmentTheme';
@@ -54,6 +54,23 @@ L.Icon.Default.mergeOptions({
   iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/images/marker-icon.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.3/images/marker-shadow.png',
 });
+
+// Component to update map view without remounting
+function MapUpdater({ center, zoom }) {
+  const map = useMap();
+  
+  useEffect(() => {
+    map.setView(center, zoom, {
+      animate: true,
+      duration: 1
+    });
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 100);
+  }, [center, zoom, map]);
+  
+  return null;
+}
 
 const WebGISMaps = () => {
   const { t } = useLanguage();
@@ -597,7 +614,6 @@ const WebGISMaps = () => {
           
           {/* Leaflet Map */}
           <MapContainer
-            key={`${selectedState}-${selectedDistrict}-${mapType}`}
             center={mapCenter}
             zoom={mapZoom}
             maxZoom={22}
@@ -607,10 +623,14 @@ const WebGISMaps = () => {
             scrollWheelZoom={true}
             doubleClickZoom={true}
             zoomControl={true}
-            whenReady={() => {
+            whenReady={(map) => {
               setMapLoading(false);
+              setTimeout(() => {
+                map.target.invalidateSize();
+              }, 100);
             }}
           >
+            <MapUpdater center={mapCenter} zoom={mapZoom} />
             <TileLayer
               attribution={mapConfigs[mapType].attribution}
               url={mapConfigs[mapType].tileUrl}

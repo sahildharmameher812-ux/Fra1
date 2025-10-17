@@ -638,3 +638,56 @@ code {
   opacity: 0;
   animation: fadeIn 0.3s ease forwards;
 }
+
+/* ==============================================
+   LEAFLET MAP FIXES FOR VERCEL DEPLOYMENT
+   ============================================== */
+
+/* Ensure map container has proper dimensions */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  background: #e0e0e0 !important;
+  z-index: 1;
+}
+
+/* Ensure tiles load and display properly */
+.leaflet-tile-container {
+  opacity: 1 !important;
+}
+
+.leaflet-tile {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ensure pane is visible */
+.leaflet-pane {
+  z-index: auto !important;
+}
+
+.leaflet-tile-pane {
+  z-index: 200 !important;
+}
+
+/* Fix for marker images */
+.leaflet-marker-icon {
+  display: block !important;
+}
+
+/* Custom marker styling */
+.custom-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Popup styling */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.leaflet-popup-content {
+  margin: 16px;
+  line-height: 1.6;
+}
