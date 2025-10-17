@@ -41,8 +41,37 @@ if (mongoUri) {
     });
 }
 
-// Security middleware
-app.use(helmet());
+// Security middleware - Configure helmet to allow map tiles
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com", "https://unpkg.com"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com", "data:"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      imgSrc: [
+        "'self'", 
+        "data:", 
+        "https:",
+        // Map tile providers
+        "https://*.tile.openstreetmap.org",
+        "https://server.arcgisonline.com",
+        "https://*.tile.opentopomap.org", 
+        "https://mt1.google.com",
+        "https://mt0.google.com",
+        "https://mt2.google.com",
+        "https://mt3.google.com",
+        "https://cdnjs.cloudflare.com"
+      ],
+      connectSrc: ["'self'", "https:", "wss:"],
+      frameSrc: ["'none'"],
+      objectSrc: ["'none'"],
+      mediaSrc: ["'self'"],
+      manifestSrc: ["'self'"]
+    },
+  },
+  crossOriginEmbedderPolicy: false
+}));
 app.use(compression());
 
 // CORS configuration
@@ -50,6 +79,7 @@ app.use(cors({
   origin: process.env.NODE_ENV === 'production' ? [
     'https://fra1-2cmv.vercel.app',
     'https://fra1-2cmv-sahildharmameher812-7747s-projects.vercel.app',
+    'https://fra1-xw6u-gywhhsxcz-sahildharmameher812-7747s-projects.vercel.app',
     'https://fra-atlas.gov.in'
   ] : 'http://localhost:3000',
   credentials: true
