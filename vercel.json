@@ -23,14 +23,6 @@
       "dest": "/server.js"
     },
     {
-      "src": "/dashboard",
-      "dest": "/dashboard.html"
-    },
-    {
-      "src": "/chat",
-      "dest": "/chat.html"
-    },
-    {
       "src": "/static/(.*)",
       "dest": "/client/build/static/$1"
     },
@@ -51,15 +43,14 @@
       "dest": "/client/build/robots.txt"
     },
     {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|map))",
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|map|json))",
       "dest": "/client/build/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/client/build/index.html",
-      "status": 200
+      "dest": "/client/build/index.html"
     }
-  ],
+  ]
   "env": {
     "NODE_ENV": "production"
   }
