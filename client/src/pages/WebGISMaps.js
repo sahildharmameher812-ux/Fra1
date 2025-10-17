@@ -434,7 +434,7 @@ const WebGISMaps = () => {
     {
       name: '3D DETAILED VIEW',
       icon: <Nature />,
-      tileUrl: 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
+      tileUrl: 'https://mt1.google.com/vt/lyrs=y&z={z}&x={x}&y={y}',
       attribution: '© Google Maps Hybrid | High-Resolution Satellite with Place Names',
     },
   ];
@@ -632,20 +632,26 @@ const WebGISMaps = () => {
           >
             <MapUpdater center={mapCenter} zoom={mapZoom} />
             <TileLayer
+              key={`tile-layer-${mapType}`}
               attribution={mapConfigs[mapType].attribution}
               url={mapConfigs[mapType].tileUrl}
               maxZoom={22}
               maxNativeZoom={mapType === 3 ? 22 : 19}
               minZoom={3}
-              onLoad={() => {
-                setMapLoading(false);
-                setMapError(false);
-              }}
-              onError={() => {
-                setMapError(true);
-                setMapLoading(false);
-                // Fallback to OpenStreetMap
-                console.warn('Map tile loading failed, falling back to OpenStreetMap');
+              crossOrigin="anonymous"
+              eventHandlers={{
+                loading: () => {
+                  console.log('🗺️ Tiles loading...');
+                },
+                load: () => {
+                  console.log('✅ Tiles loaded successfully');
+                  setMapLoading(false);
+                  setMapError(false);
+                },
+                tileerror: (error) => {
+                  console.error('❌ Tile loading error:', error);
+                  setMapError(true);
+                },
               }}
             />
             
