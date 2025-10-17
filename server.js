@@ -41,11 +41,8 @@ if (mongoUri) {
     });
 }
 
-// Security middleware - DISABLE Helmet CSP for Vercel (handled by _headers file)
-app.use(helmet({
-  contentSecurityPolicy: false,
-  crossOriginEmbedderPolicy: false
-}));
+// Security middleware - COMPLETELY DISABLED for Vercel map tiles
+// app.use(helmet());
 app.use(compression());
 
 // CORS configuration
