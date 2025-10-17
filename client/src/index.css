@@ -1,0 +1,640 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Custom properties for consistent theming */
+:root {
+  --primary-color: #2E7D32;
+  --primary-light: #4CAF50;
+  --primary-dark: #1B5E20;
+  --secondary-color: #1565C0;
+  --secondary-light: #2196F3;
+  --secondary-dark: #0D47A1;
+  --success-color: #4CAF50;
+  --warning-color: #FF9800;
+  --error-color: #F44336;
+  --info-color: #2196F3;
+  --background-primary: #F8F9FA;
+  --background-secondary: #FFFFFF;
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --border-color: #E0E0E0;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.15);
+  --shadow-heavy: rgba(0, 0, 0, 0.25);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --border-radius: 12px;
+  --border-radius-small: 8px;
+  --border-radius-large: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-normal);
+  overflow-x: hidden;
+}
+
+code {
+  font-family: 'Fira Code', 'Monaco', 'Consolas', 'Liberation Mono', monospace;
+}
+
+/* Enhanced custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #f1f1f1 0%, #e8e8e8 100%);
+  border-radius: 6px;
+  margin: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: all var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--primary-light) 0%, var(--primary-color) 100%);
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--background-primary);
+}
+
+/* Enhanced map container styles */
+.map-container {
+  height: 600px;
+  width: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 
+    0 4px 12px var(--shadow-light),
+    0 2px 4px var(--shadow-light);
+  transition: all var(--transition-normal);
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.map-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+  border-radius: var(--border-radius);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.map-container:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 8px 24px var(--shadow-medium),
+    0 4px 12px var(--shadow-light);
+}
+
+.map-container:hover::before {
+  opacity: 1;
+}
+
+.fullscreen-map {
+  height: calc(100vh - 120px);
+  animation: expandMap var(--transition-slow) ease-out;
+}
+
+@keyframes expandMap {
+  from {
+    height: 600px;
+    transform: scale(0.95);
+  }
+  to {
+    height: calc(100vh - 120px);
+    transform: scale(1);
+  }
+}
+
+/* Enhanced custom button styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  border: none;
+  border-radius: var(--border-radius-small);
+  padding: 14px 28px;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  box-shadow: 
+    0 2px 8px rgba(46, 125, 50, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 6px 20px rgba(46, 125, 50, 0.4),
+    0 2px 8px rgba(46, 125, 50, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s ease;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--secondary-light) 100%);
+  border: none;
+  border-radius: var(--border-radius-small);
+  padding: 14px 28px;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  box-shadow: 
+    0 2px 8px rgba(21, 101, 192, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-secondary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--secondary-color) 100%);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 6px 20px rgba(21, 101, 192, 0.4),
+    0 2px 8px rgba(21, 101, 192, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:active {
+  transform: translateY(-1px) scale(1.02);
+  transition: all 0.1s ease;
+}
+
+/* Outline button variants */
+.btn-outline-primary {
+  background: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius-small);
+  padding: 12px 26px;
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--primary-color);
+  transition: width var(--transition-normal);
+  z-index: -1;
+}
+
+.btn-outline-primary:hover::before {
+  width: 100%;
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+}
+
+/* Card animations */
+.card-hover {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Loading animation */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(46, 125, 50, 0.3);
+  border-radius: 50%;
+  border-top-color: #2E7D32;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Status badges */
+.status-approved {
+  background-color: #4CAF50;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-pending {
+  background-color: #FF9800;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-rejected {
+  background-color: #F44336;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-under-review {
+  background-color: #2196F3;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Utility classes */
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: #2E7D32;
+}
+
+.text-secondary {
+  color: #1565C0;
+}
+
+.mb-2 {
+  margin-bottom: 16px;
+}
+
+.mb-3 {
+  margin-bottom: 24px;
+}
+
+.mt-2 {
+  margin-top: 16px;
+}
+
+.mt-3 {
+  margin-top: 24px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .map-container {
+    height: 400px;
+  }
+  
+  .fullscreen-map {
+    height: calc(100vh - 80px);
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Government portal specific styles */
+.gov-header {
+  background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 12px 12px 0 0;
+}
+
+.stats-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-left: 4px solid #2E7D32;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: #E0E0E0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2E7D32 0%, #4CAF50 100%);
+  transition: width 0.3s ease;
+}
+
+/* Map legend styles */
+.map-legend {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  margin-right: 8px;
+}
+
+/* Toast notification overrides */
+.Toastify__toast {
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.Toastify__toast--success {
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+}
+
+.Toastify__toast--error {
+  background: linear-gradient(135deg, #F44336 0%, #C62828 100%);
+}
+
+.Toastify__toast--info {
+  background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%);
+}
+
+/* ==============================================
+   BEGINNER-FRIENDLY ANIMATION UTILITIES
+   ============================================== */
+
+/* Simple fade in animation - makes things appear smoothly */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;        /* Start invisible */
+    transform: translateY(20px);  /* Start slightly below */
+  }
+  to {
+    opacity: 1;        /* End fully visible */
+    transform: translateY(0);     /* End in normal position */
+  }
+}
+
+/* Slide in from left - good for sidebars */
+.slide-in-left {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);  /* Start 50px to the left */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);      /* End in normal position */
+  }
+}
+
+/* Slide in from right - good for notifications */
+.slide-in-right {
+  animation: slideInRight 0.5s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);   /* Start 50px to the right */
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);      /* End in normal position */
+  }
+}
+
+/* Bounce effect - fun for buttons */
+.bounce {
+  animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    transform: translateY(0);      /* Normal position */
+  }
+  40% {
+    transform: translateY(-30px);  /* Jump up */
+  }
+  80% {
+    transform: translateY(-15px);  /* Smaller jump */
+  }
+}
+
+/* Pulse effect - good for notifications or important items */
+.pulse {
+  animation: pulse 2s infinite;   /* Repeats forever every 2 seconds */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);           /* Normal size */
+  }
+  50% {
+    transform: scale(1.05);        /* 5% bigger */
+  }
+  100% {
+    transform: scale(1);           /* Back to normal */
+  }
+}
+
+/* Shake effect - good for errors */
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Rotate effect - good for loading icons */
+.rotate {
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Scale up on hover - makes things feel interactive */
+.hover-grow {
+  transition: transform var(--transition-normal);
+  cursor: pointer;
+}
+
+.hover-grow:hover {
+  transform: scale(1.05);          /* 5% bigger on hover */
+}
+
+/* Gentle float effect - subtle movement */
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ==============================================
+   ENHANCED FORM STYLES (BEGINNER-FRIENDLY)
+   ============================================== */
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;              /* Needed for floating labels */
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--primary-color);
+  transition: color var(--transition-fast);
+}
+
+/* Enhanced input with smooth animations */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-small);
+  font-size: 16px;
+  transition: all var(--transition-normal);  /* Smooth transition for all properties */
+  background-color: var(--background-secondary);
+}
+
+/* What happens when user clicks/focuses on input */
+.form-input:focus {
+  outline: none;                   /* Remove default browser outline */
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);  /* Soft glow effect */
+  transform: scale(1.02);          /* Slightly bigger when focused */
+}
+
+/* Error state - when something goes wrong */
+.form-input.error {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1);
+  animation: shake 0.5s ease-in-out;  /* Shake to get attention */
+}
+
+/* Error message styling */
+.form-error {
+  color: var(--error-color);
+  font-size: 14px;
+  margin-top: 4px;
+  opacity: 0;                      /* Start invisible */
+  animation: fadeIn 0.3s ease forwards;  /* Fade in smoothly */
+}
+
+/* Success state - when everything is good */
+.form-input.success {
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.form-success {
+  color: var(--success-color);
+  font-size: 14px;
+  margin-top: 4px;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}

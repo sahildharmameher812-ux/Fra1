@@ -1,0 +1,707 @@
+/* ================================
+   SIH WINNER DASHBOARD CSS
+   Advanced Animations & Professional Styling
+   ================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ===== ROOT VARIABLES (SIH WINNER COLORS) ===== */
+:root {
+  --sih-green: #2E7D32;
+  --sih-blue: #1565C0;
+  --sih-orange: #FF7043;
+  --sih-white: #FFFFFF;
+  --sih-surface: #F8F9FA;
+  --sih-success: #4CAF50;
+  --sih-shadow: rgba(0, 0, 0, 0.08);
+  --sih-gradient-1: linear-gradient(135deg, #2E7D32 0%, #1565C0 100%);
+  --sih-gradient-2: linear-gradient(135deg, #1565C0 0%, #FF7043 100%);
+  --sih-gradient-3: linear-gradient(135deg, #FF7043 0%, #2E7D32 100%);
+  --sih-glow-green: 0 0 20px rgba(46, 125, 50, 0.3);
+  --sih-glow-blue: 0 0 20px rgba(21, 101, 192, 0.3);
+  --sih-glow-orange: 0 0 20px rgba(255, 112, 67, 0.3);
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== LOADING ANIMATIONS ===== */
+.sih-loading-spinner {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.sih-loading-spinner::before,
+.sih-loading-spinner::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  animation: sih-pulse 2s ease-in-out infinite;
+}
+
+.sih-loading-spinner::before {
+  width: 100px;
+  height: 100px;
+  border: 4px solid var(--sih-green);
+  top: 0;
+  left: 0;
+  animation-delay: -1s;
+}
+
+.sih-loading-spinner::after {
+  width: 80px;
+  height: 80px;
+  border: 4px solid var(--sih-blue);
+  top: 10px;
+  left: 10px;
+}
+
+@keyframes sih-pulse {
+  0%, 100% { 
+    transform: scale(0.8); 
+    opacity: 0.8; 
+  }
+  50% { 
+    transform: scale(1.2); 
+    opacity: 0.3; 
+  }
+}
+
+/* ===== CARD ANIMATIONS ===== */
+.sih-card {
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sih-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: all 0.6s;
+  opacity: 0;
+}
+
+.sih-card:hover::before {
+  animation: sih-shine 0.8s ease-in-out;
+}
+
+.sih-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px var(--sih-shadow);
+}
+
+@keyframes sih-shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* ===== KPI CARD ANIMATIONS ===== */
+.sih-kpi-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sih-kpi-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--sih-gradient-1);
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.sih-kpi-card:hover::after {
+  transform: scaleX(1);
+}
+
+.sih-kpi-card:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--sih-glow-green);
+}
+
+/* ===== ANIMATED COUNTERS ===== */
+.sih-counter {
+  font-family: 'Inter', monospace;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  position: relative;
+}
+
+.sih-counter::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--sih-gradient-2);
+  animation: sih-counter-glow 2s ease-in-out infinite;
+}
+
+@keyframes sih-counter-glow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* ===== CHART CONTAINER ANIMATIONS ===== */
+.sih-chart-container {
+  position: relative;
+  transition: all 0.4s ease;
+  border-radius: 16px;
+  background: var(--sih-white);
+  box-shadow: 0 8px 32px var(--sih-shadow);
+  border: 1px solid rgba(46, 125, 50, 0.1);
+}
+
+.sih-chart-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  background: var(--sih-gradient-1);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.sih-chart-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px var(--sih-shadow);
+}
+
+.sih-chart-container:hover::before {
+  opacity: 0.02;
+}
+
+/* ===== LIVE INDICATOR ===== */
+.sih-live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--sih-success);
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+.sih-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sih-success);
+  animation: sih-live-pulse 2s infinite;
+}
+
+@keyframes sih-live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+/* ===== CHART ENTRY ANIMATIONS ===== */
+.sih-chart-enter {
+  animation: sih-chart-slide-up 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes sih-chart-slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== GRADIENT TEXT ANIMATION ===== */
+.sih-gradient-text {
+  background: var(--sih-gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: sih-gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes sih-gradient-shift {
+  0%, 100% {
+    background: var(--sih-gradient-1);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  33% {
+    background: var(--sih-gradient-2);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  66% {
+    background: var(--sih-gradient-3);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+/* ===== FLOATING ACTION BUTTON ===== */
+.sih-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.sih-fab-button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.sih-fab-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.sih-fab-button:hover {
+  transform: scale(1.15);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.sih-fab-button:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.sih-fab-button:active {
+  transform: scale(0.95);
+}
+
+/* ===== TREND INDICATORS ===== */
+.sih-trend-up {
+  color: var(--sih-success);
+  animation: sih-trend-bounce 2s ease-in-out infinite;
+}
+
+.sih-trend-down {
+  color: #F44336;
+  animation: sih-trend-bounce 2s ease-in-out infinite reverse;
+}
+
+@keyframes sih-trend-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* ===== TOOLTIP ANIMATIONS ===== */
+.sih-tooltip {
+  background: rgba(22, 33, 62, 0.95) !important;
+  border: 1px solid rgba(46, 125, 50, 0.3) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===== PROGRESS BARS ===== */
+.sih-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(46, 125, 50, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.sih-progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  position: relative;
+  transition: width 2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sih-progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: sih-progress-shimmer 2s infinite;
+}
+
+@keyframes sih-progress-shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ===== GRID ANIMATIONS ===== */
+.sih-dashboard-grid {
+  display: grid;
+  gap: 24px;
+  animation: sih-grid-fade-in 1s ease-out;
+}
+
+@keyframes sih-grid-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.sih-scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sih-scroll-reveal.sih-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ANIMATIONS ===== */
+@media (max-width: 768px) {
+  .sih-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  .sih-kpi-card:hover {
+    transform: translateY(-6px);
+  }
+  
+  .sih-chart-container:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* ===== CHART SPECIFIC ANIMATIONS ===== */
+.sih-doughnut-chart {
+  position: relative;
+}
+
+.sih-doughnut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.sih-doughnut-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--sih-green);
+  animation: sih-counter-spin 3s ease-in-out;
+}
+
+.sih-doughnut-label {
+  font-size: 0.9rem;
+  color: var(--sih-blue);
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+@keyframes sih-counter-spin {
+  0% { 
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== RADAR CHART ANIMATIONS ===== */
+.sih-radar-chart {
+  animation: sih-radar-sweep 3s ease-in-out;
+}
+
+@keyframes sih-radar-sweep {
+  0% {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* ===== BUTTON HOVER EFFECTS ===== */
+.sih-action-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.sih-action-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.sih-action-button:hover::before {
+  left: 100%;
+}
+
+/* ===== HEADER ANIMATIONS ===== */
+.sih-header {
+  animation: sih-header-entrance 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@keyframes sih-header-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(10px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== MICRO INTERACTIONS ===== */
+.sih-clickable {
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  user-select: none;
+}
+
+.sih-clickable:active {
+  transform: scale(0.98);
+}
+
+/* ===== SUCCESS STATES ===== */
+.sih-success-glow {
+  box-shadow: var(--sih-glow-green);
+  border-color: var(--sih-success);
+}
+
+.sih-info-glow {
+  box-shadow: var(--sih-glow-blue);
+  border-color: var(--sih-blue);
+}
+
+.sih-warning-glow {
+  box-shadow: var(--sih-glow-orange);
+  border-color: var(--sih-orange);
+}
+
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+.sih-gpu-accelerated {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sih-surface: #1a1a1a;
+    --sih-shadow: rgba(255, 255, 255, 0.05);
+  }
+  
+  .sih-chart-container {
+    background: #2d2d2d;
+    border-color: rgba(46, 125, 50, 0.3);
+  }
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .sih-fab,
+  .sih-live-indicator {
+    display: none !important;
+  }
+  
+  .sih-chart-container {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+/* ===== STATISTICS BAR ANIMATIONS ===== */
+.sih-stats-circle {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.sih-stats-circle:hover {
+  transform: scale(1.05) translateY(-2px);
+}
+
+.sih-stats-circle::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0;
+  animation: sih-stats-pulse 3s ease-in-out infinite;
+}
+
+@keyframes sih-stats-pulse {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.1);
+  }
+}
+
+.sih-stats-number {
+  animation: sih-stats-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes sih-stats-glow {
+  0% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* Processing indicator animation */
+.sih-processing-dot {
+  animation: sih-processing-blink 1.5s ease-in-out infinite;
+}
+
+@keyframes sih-processing-blink {
+  0%, 50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+}
+
+/* Stats card hover effect */
+.sih-stats-card:hover .sih-stats-circle {
+  transform: rotateY(10deg) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Responsive stats */
+@media (max-width: 600px) {
+  .sih-stats-circle {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  .sih-stats-number {
+    font-size: 1.3rem !important;
+  }
+}

@@ -1,0 +1,201 @@
+/* MASTER DASHBOARD SPACING FIX - OVERRIDE ALL CONFLICTS */
+
+/* RESET ALL CONFLICTING STYLES */
+* {
+  box-sizing: border-box;
+}
+
+/* MAIN DASHBOARD CONTAINER */
+.engineer-dashboard,
+.stunning-dashboard-container {
+  padding: 20px !important;
+  margin: 0 !important;
+  background: #f8f9fa !important;
+  min-height: 100vh;
+}
+
+/* GRID SYSTEM - PROPER SPACING */
+.MuiGrid-container {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.MuiGrid-item {
+  padding: 12px !important;
+}
+
+/* HEADER SECTION */
+.dashboard-header,
+.header-section {
+  margin: 0 0 24px 0 !important;
+  padding: 32px 24px !important;
+  background: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+}
+
+/* ALL CARDS - CONSISTENT SPACING */
+.MuiCard-root,
+.modern-dashboard-card,
+.stat-card-stunning,
+.chart-card-stunning {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+  border: 1px solid rgba(0,0,0,0.06) !important;
+  transition: all 0.2s ease !important;
+}
+
+.MuiCard-root:hover,
+.modern-dashboard-card:hover,
+.chart-card-stunning:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+}
+
+/* CARD CONTENT - 24PX INTERNAL PADDING */
+.MuiCardContent-root {
+  padding: 24px !important;
+}
+
+.MuiCardContent-root:last-child {
+  padding-bottom: 24px !important;
+}
+
+/* CHART CONTAINERS */
+.chart-wrapper {
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+/* CHART HEADERS */
+.chart-title,
+.chart-header {
+  padding: 24px 24px 20px 24px !important;
+  margin: 0 !important;
+  border-bottom: 1px solid rgba(0,0,0,0.04) !important;
+}
+
+/* CHART CONTENT */
+.chart-content {
+  padding: 20px 24px 24px 24px !important;
+}
+
+/* RESPONSIVE CONTAINERS - PROPER SIZING */
+.recharts-responsive-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* KPI CARDS SPECIFIC */
+.stat-card-stunning {
+  height: auto !important;
+  min-height: 180px !important;
+}
+
+/* GRID SPACING - 16PX BETWEEN CARDS */
+.MuiGrid-spacing-xs-2 > .MuiGrid-item {
+  padding: 12px !important;
+}
+
+.MuiGrid-spacing-xs-3 > .MuiGrid-item {
+  padding: 12px !important;
+}
+
+/* ENSURE PROPER MARGINS FROM EDGES */
+.dashboard-section {
+  margin-bottom: 24px !important;
+}
+
+/* TYPOGRAPHY SPACING */
+.MuiTypography-h2 {
+  margin-bottom: 8px !important;
+}
+
+.MuiTypography-h6 {
+  margin-bottom: 0 !important;
+}
+
+/* OVERRIDE ANY DARK THEME ISSUES */
+.engineer-dashboard,
+.engineer-dashboard * {
+  color: #2c3e50 !important;
+}
+
+/* ENSURE ALL CHARTS ARE VISIBLE */
+.recharts-surface,
+.recharts-layer,
+.recharts-area,
+.recharts-line,
+.recharts-bar-rectangle,
+.recharts-pie,
+.recharts-pie-sector {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* CLEAN LAYOUT */
+.dashboard-container {
+  max-width: none !important;
+  padding: 20px !important;
+}
+
+/* FOOTER SPACING */
+.dashboard-footer {
+  margin-top: 32px !important;
+  padding: 24px !important;
+}
+
+/* REMOVE PROBLEMATIC ANIMATIONS */
+.slide-in-up,
+.slide-in-left,
+.slide-in-right,
+.slide-in-down,
+.fade-in,
+.scale-in {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+}
+
+/* HOVER EFFECTS */
+.dashboard-card-hover:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .engineer-dashboard {
+    padding: 16px !important;
+  }
+  
+  .MuiGrid-item {
+    padding: 8px !important;
+  }
+  
+  .MuiCardContent-root {
+    padding: 20px !important;
+  }
+  
+  .chart-title,
+  .chart-header {
+    padding: 20px 20px 16px 20px !important;
+  }
+  
+  .chart-content {
+    padding: 16px 20px 20px 20px !important;
+  }
+}
+
+/* FORCE CLEAN APPEARANCE */
+.modern-spacing {
+  margin: 16px 0 !important;
+  padding: 24px !important;
+  border-radius: 16px !important;
+}

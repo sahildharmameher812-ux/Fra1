@@ -1,0 +1,238 @@
+/* India Map Component Custom CSS Animations */
+
+/* Floating animation for background elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-10px) rotate(2deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1deg);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-15px) rotate(1deg);
+    opacity: 0.8;
+  }
+}
+
+/* Pulsing glow effect for highlighted states */
+@keyframes pulse {
+  0% {
+    filter: drop-shadow(0 0 5px currentColor);
+    opacity: 0.8;
+  }
+  50% {
+    filter: drop-shadow(0 0 20px currentColor) drop-shadow(0 0 30px currentColor);
+    opacity: 1;
+  }
+  100% {
+    filter: drop-shadow(0 0 5px currentColor);
+    opacity: 0.8;
+  }
+}
+
+/* Animated border glow for the map container */
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(21, 101, 192, 0.1);
+  }
+  25% {
+    border-color: rgba(21, 101, 192, 0.4);
+    box-shadow: 0 0 30px rgba(21, 101, 192, 0.2);
+  }
+  50% {
+    border-color: rgba(46, 125, 50, 0.4);
+    box-shadow: 0 0 30px rgba(46, 125, 50, 0.2);
+  }
+  75% {
+    border-color: rgba(255, 153, 51, 0.4);
+    box-shadow: 0 0 30px rgba(255, 153, 51, 0.2);
+  }
+}
+
+/* Shimmer effect for state paths */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Particle system animation */
+@keyframes particle {
+  0% {
+    transform: translateY(0) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(20px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Wave animation for connection lines */
+@keyframes wave {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -20;
+  }
+}
+
+/* Text glow effect for state labels */
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px currentColor;
+  }
+}
+
+/* Loading dots animation */
+@keyframes loadingDots {
+  0%, 20% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  60%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+}
+
+/* Ripple effect for state hover */
+@keyframes ripple {
+  0% {
+    r: 0;
+    opacity: 1;
+  }
+  100% {
+    r: 50;
+    opacity: 0;
+  }
+}
+
+/* Map container enhancements */
+.india-map-container {
+  animation: borderGlow 8s ease-in-out infinite;
+}
+
+.india-map-container:hover {
+  animation-play-state: paused;
+}
+
+/* State path hover effects */
+.state-path {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.state-path:hover {
+  animation: pulse 1.5s ease-in-out infinite;
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Background particle effects */
+.background-particles::before,
+.background-particles::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: particle 6s ease-in-out infinite;
+}
+
+.background-particles::before {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.background-particles::after {
+  top: 70%;
+  left: 80%;
+  animation-delay: 3s;
+}
+
+/* Information card enhancement */
+.state-info-card {
+  backdrop-filter: blur(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.state-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Progress indicator enhancements */
+.loading-indicator {
+  animation: loadingDots 2s ease-in-out infinite;
+}
+
+.loading-indicator:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loading-indicator:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.loading-indicator:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.loading-indicator:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+/* Enhanced responsive animations */
+@media (max-width: 768px) {
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(1deg);
+    }
+  }
+  
+  .state-path:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* Accessibility enhancements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

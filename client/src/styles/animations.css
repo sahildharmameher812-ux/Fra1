@@ -1,0 +1,570 @@
+/* =========================================================================
+   PRIORITY ANIMATIONS CSS - IMPORT THIS FIRST!
+   High-priority smooth transitions and animations for FRA Atlas
+   ========================================================================= */
+
+/* CSS Variables for consistent animation timing and easing */
+:root {
+  --animation-fast: 200ms;
+  --animation-normal: 400ms;
+  --animation-slow: 600ms;
+  --animation-slower: 800ms;
+  
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  --shadow-light: 0 2px 8px rgba(0,0,0,0.1);
+  --shadow-medium: 0 4px 16px rgba(0,0,0,0.12);
+  --shadow-heavy: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+/* GLOBAL ANIMATION UTILITIES - HIGH PRIORITY */
+* {
+  transition-property: transform, opacity, background-color, border-color, color, fill, stroke, box-shadow !important;
+  transition-duration: var(--animation-normal) !important;
+  transition-timing-function: var(--ease-in-out) !important;
+}
+
+/* Disable transitions for reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* PAGE TRANSITION ANIMATIONS */
+.page-transition {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+.page-transition.enter {
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+  transition: all var(--animation-slow) var(--ease-out) !important;
+}
+
+.page-transition.exit {
+  opacity: 0 !important;
+  transform: translateX(-30px) !important;
+  transition: all var(--animation-slow) var(--ease-in) !important;
+}
+
+.page-content {
+  width: 100% !important;
+  height: 100% !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+
+/* SLIDE ANIMATIONS - HIGH PRIORITY */
+.slide-animation {
+  will-change: transform, opacity !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}
+
+.slide-in {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+  transition: all var(--animation-slow) var(--ease-bounce) !important;
+}
+
+.slide-out {
+  opacity: 0 !important;
+  transform: translate3d(0, 30px, 0) !important;
+  transition: all var(--animation-slow) var(--ease-in) !important;
+}
+
+/* DIRECTIONAL SLIDE ANIMATIONS */
+.slide-in-left {
+  animation: slideInLeft var(--animation-slow) var(--ease-out) forwards !important;
+}
+
+.slide-in-right {
+  animation: slideInRight var(--animation-slow) var(--ease-out) forwards !important;
+}
+
+.slide-in-up {
+  animation: slideInUp var(--animation-slow) var(--ease-out) forwards !important;
+}
+
+.slide-in-down {
+  animation: slideInDown var(--animation-slow) var(--ease-out) forwards !important;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0 !important;
+    transform: translate3d(-100px, 0, 0) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0 !important;
+    transform: translate3d(100px, 0, 0) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0 !important;
+    transform: translate3d(0, 50px, 0) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0 !important;
+    transform: translate3d(0, -50px, 0) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+}
+
+/* FADE ANIMATIONS - HIGH PRIORITY */
+.fade-animation {
+  will-change: opacity !important;
+  backface-visibility: hidden !important;
+}
+
+.fade-in {
+  opacity: 1 !important;
+  transition: opacity var(--animation-slower) var(--ease-out) !important;
+}
+
+.fade-out {
+  opacity: 0 !important;
+  transition: opacity var(--animation-normal) var(--ease-in) !important;
+}
+
+.fade-in-fast {
+  animation: fadeInFast var(--animation-fast) var(--ease-out) forwards !important;
+}
+
+.fade-in-slow {
+  animation: fadeInSlow var(--animation-slower) var(--ease-out) forwards !important;
+}
+
+@keyframes fadeInFast {
+  from { opacity: 0 !important; }
+  to { opacity: 1 !important; }
+}
+
+@keyframes fadeInSlow {
+  from { opacity: 0 !important; }
+  to { opacity: 1 !important; }
+}
+
+/* SCALE ANIMATIONS - HIGH PRIORITY */
+.scale-animation {
+  will-change: transform, opacity !important;
+  transform-origin: center center !important;
+}
+
+.scale-in {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+  transition: all var(--animation-slow) var(--ease-bounce) !important;
+}
+
+.scale-out {
+  opacity: 0 !important;
+  transform: scale(0.9) !important;
+  transition: all var(--animation-normal) var(--ease-in) !important;
+}
+
+.scale-in-bounce {
+  animation: scaleInBounce var(--animation-slow) var(--ease-bounce) forwards !important;
+}
+
+@keyframes scaleInBounce {
+  from {
+    opacity: 0 !important;
+    transform: scale(0.3) !important;
+  }
+  50% {
+    transform: scale(1.05) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+}
+
+/* STAGGERED ANIMATIONS - HIGH PRIORITY */
+.stagger-item {
+  will-change: transform, opacity !important;
+  backface-visibility: hidden !important;
+}
+
+.stagger-item.hidden {
+  opacity: 0 !important;
+  transform: translate3d(0, 20px, 0) scale(0.95) !important;
+}
+
+.stagger-item.visible {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
+  transition: all var(--animation-slow) var(--ease-bounce) !important;
+}
+
+/* Animation delays for staggered effects */
+.stagger-delay-1 { animation-delay: 0.1s !important; }
+.stagger-delay-2 { animation-delay: 0.2s !important; }
+.stagger-delay-3 { animation-delay: 0.3s !important; }
+.stagger-delay-4 { animation-delay: 0.4s !important; }
+.stagger-delay-5 { animation-delay: 0.5s !important; }
+.stagger-delay-6 { animation-delay: 0.6s !important; }
+
+/* MODAL AND DIALOG ANIMATIONS - HIGH PRIORITY */
+.modal-animation {
+  will-change: transform, opacity !important;
+  backface-visibility: hidden !important;
+}
+
+.modal-enter {
+  opacity: 1 !important;
+  transform: scale(1) translate3d(0, 0, 0) !important;
+  transition: all var(--animation-normal) var(--ease-out) !important;
+}
+
+.modal-exit {
+  opacity: 0 !important;
+  transform: scale(0.95) translate3d(0, -10px, 0) !important;
+  transition: all var(--animation-fast) var(--ease-in) !important;
+}
+
+.modal-backdrop {
+  opacity: 0 !important;
+  transition: opacity var(--animation-normal) var(--ease-out) !important;
+}
+
+.modal-backdrop.show {
+  opacity: 1 !important;
+}
+
+/* CARD HOVER ANIMATIONS - HIGH PRIORITY */
+.card-hover {
+  transform: translateY(0) !important;
+  box-shadow: var(--shadow-light) !important;
+  transition: all var(--animation-normal) var(--ease-out) !important;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: var(--shadow-heavy) !important;
+}
+
+.card-hover:active {
+  transform: translateY(-2px) !important;
+  transition-duration: var(--animation-fast) !important;
+}
+
+/* BUTTON ANIMATIONS - HIGH PRIORITY */
+.btn-animate {
+  transform: scale(1) !important;
+  transition: all var(--animation-fast) var(--ease-out) !important;
+}
+
+.btn-animate:hover {
+  transform: scale(1.05) !important;
+  box-shadow: var(--shadow-medium) !important;
+}
+
+.btn-animate:active {
+  transform: scale(0.98) !important;
+  transition-duration: var(--animation-fast) !important;
+}
+
+/* LOADING ANIMATIONS - HIGH PRIORITY */
+.loading-pulse {
+  animation: loadingPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+}
+
+@keyframes loadingPulse {
+  0%, 100% {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  50% {
+    opacity: 0.8 !important;
+    transform: scale(1.05) !important;
+  }
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%) !important;
+  background-size: 200% 100% !important;
+  animation: shimmer 2s infinite !important;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.loading-spinner {
+  width: 40px !important;
+  height: 40px !important;
+  border: 4px solid #f3f3f3 !important;
+  border-top: 4px solid #3498db !important;
+  border-radius: 50% !important;
+  animation: spin 1s linear infinite !important;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg) !important; }
+  100% { transform: rotate(360deg) !important; }
+}
+
+/* BOUNCE AND ELASTIC ANIMATIONS - HIGH PRIORITY */
+.bounce-in {
+  animation: bounceIn var(--animation-slower) var(--ease-bounce) forwards !important;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0 !important;
+    transform: scale3d(0.3, 0.3, 0.3) !important;
+  }
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1) !important;
+  }
+  40% {
+    transform: scale3d(0.9, 0.9, 0.9) !important;
+  }
+  60% {
+    opacity: 1 !important;
+    transform: scale3d(1.03, 1.03, 1.03) !important;
+  }
+  80% {
+    transform: scale3d(0.97, 0.97, 0.97) !important;
+  }
+  100% {
+    opacity: 1 !important;
+    transform: scale3d(1, 1, 1) !important;
+  }
+}
+
+.elastic-in {
+  animation: elasticIn var(--animation-slower) var(--ease-elastic) forwards !important;
+}
+
+@keyframes elasticIn {
+  from {
+    opacity: 0 !important;
+    transform: scale3d(0.3, 0.3, 0.3) !important;
+  }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05) !important;
+  }
+  70% {
+    transform: scale3d(0.95, 0.95, 0.95) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: scale3d(1, 1, 1) !important;
+  }
+}
+
+/* SCROLL TRIGGERED ANIMATIONS - HIGH PRIORITY */
+.scroll-animation {
+  will-change: transform, opacity !important;
+}
+
+.animate-in {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+  transition: all var(--animation-slow) var(--ease-out) !important;
+}
+
+.animate-out {
+  opacity: 0 !important;
+  transform: translate3d(0, 50px, 0) !important;
+}
+
+/* NUMBER COUNTER ANIMATIONS - HIGH PRIORITY */
+.counter-animation {
+  animation: countUp 1.5s var(--ease-out) !important;
+  transform-origin: center center !important;
+}
+
+@keyframes countUp {
+  0% {
+    opacity: 0 !important;
+    transform: scale(0.8) !important;
+  }
+  50% {
+    transform: scale(1.1) !important;
+  }
+  100% {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+}
+
+/* PULSE EFFECTS - HIGH PRIORITY */
+.pulse-success {
+  animation: pulseSuccess 2s infinite !important;
+}
+
+.pulse-warning {
+  animation: pulseWarning 2s infinite !important;
+}
+
+.pulse-danger {
+  animation: pulseDanger 2s infinite !important;
+}
+
+@keyframes pulseSuccess {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7) !important; }
+  70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0) !important; }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0) !important; }
+}
+
+@keyframes pulseWarning {
+  0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7) !important; }
+  70% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0) !important; }
+  100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0) !important; }
+}
+
+@keyframes pulseDanger {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7) !important; }
+  70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0) !important; }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0) !important; }
+}
+
+/* MATERIAL UI COMPONENT OVERRIDES - HIGH PRIORITY */
+.MuiCard-root {
+  transform: translateY(0) !important;
+  transition: all var(--animation-normal) var(--ease-out) !important;
+}
+
+.MuiCard-root:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--shadow-medium) !important;
+}
+
+.MuiButton-root {
+  transition: all var(--animation-fast) var(--ease-out) !important;
+}
+
+.MuiButton-root:hover {
+  transform: translateY(-2px) !important;
+}
+
+.MuiPaper-root {
+  transition: all var(--animation-normal) var(--ease-out) !important;
+}
+
+.MuiChip-root {
+  transition: all var(--animation-fast) var(--ease-out) !important;
+}
+
+.MuiChip-root:hover {
+  transform: scale(1.05) !important;
+}
+
+/* CHART AND VISUALIZATION ANIMATIONS - HIGH PRIORITY */
+.chart-container {
+  opacity: 0 !important;
+  animation: chartFadeIn var(--animation-slower) var(--ease-out) forwards !important;
+}
+
+@keyframes chartFadeIn {
+  from {
+    opacity: 0 !important;
+    transform: scale(0.95) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+}
+
+.chart-legend {
+  animation: slideInUp var(--animation-slow) var(--ease-out) forwards !important;
+}
+
+.chart-tooltip {
+  opacity: 0 !important;
+  transform: scale(0.9) !important;
+  transition: all var(--animation-fast) var(--ease-out) !important;
+}
+
+.chart-tooltip.show {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+/* RESPONSIVE ANIMATION ADJUSTMENTS */
+@media (max-width: 768px) {
+  :root {
+    --animation-fast: 150ms;
+    --animation-normal: 300ms;
+    --animation-slow: 450ms;
+    --animation-slower: 600ms;
+  }
+  
+  .slide-in-left,
+  .slide-in-right,
+  .slide-in-up,
+  .slide-in-down {
+    animation-duration: var(--animation-normal) !important;
+  }
+}
+
+/* ACCESSIBILITY IMPROVEMENTS */
+@media (prefers-reduced-motion: reduce) {
+  .slide-animation,
+  .fade-animation,
+  .scale-animation,
+  .stagger-item,
+  .modal-animation {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* HIGH PERFORMANCE OPTIMIZATIONS */
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  will-change: transform, opacity !important;
+}
+
+/* Force GPU acceleration for better performance */
+.slide-animation,
+.fade-animation,
+.scale-animation,
+.stagger-item,
+.modal-animation {
+  transform: translate3d(0, 0, 0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+}

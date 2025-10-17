@@ -1,0 +1,354 @@
+/* Enhanced Chart Animations and Transitions */
+
+/* Simple direct movement for all charts */
+.animated-chart {
+  opacity: 1 !important;
+}
+
+/* Direct movement for all chart containers */
+.chart-container {
+  animation: simpleMove 5s ease-in-out infinite !important;
+}
+
+/* Pause on hover */
+.chart-container:hover {
+  animation-play-state: paused !important;
+  transform: scale(1.05) !important;
+  transition: transform 0.3s ease !important;
+}
+
+/* Simple movement animation */
+@keyframes simpleMove {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Keyframe animations */
+@keyframes chartFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(74, 144, 226, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 144, 226, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Chart elements with subtle living animations */
+.recharts-bar-rectangle {
+  transition: all 0.4s ease;
+  animation: barBreath 10s ease-in-out infinite;
+}
+
+.recharts-bar-rectangle:hover {
+  filter: brightness(1.15) drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+  transform: scaleY(1.05);
+  animation-play-state: paused;
+}
+
+.recharts-pie-sector {
+  transition: all 0.4s ease;
+  animation: pieGlow 12s ease-in-out infinite;
+}
+
+.recharts-pie-sector:hover {
+  filter: brightness(1.15) drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+  transform: scale(1.03);
+  animation-play-state: paused;
+}
+
+.recharts-area-area {
+  transition: all 0.4s ease;
+  animation: areaShimmer 14s ease-in-out infinite;
+}
+
+.recharts-area-area:hover {
+  filter: brightness(1.08);
+  animation-play-state: paused;
+}
+
+.recharts-line-curve {
+  transition: all 0.4s ease;
+  animation: lineGlow 11s ease-in-out infinite;
+}
+
+.recharts-line-curve:hover {
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+  animation-play-state: paused;
+}
+
+.recharts-radial-bar-sector {
+  transition: all 0.4s ease;
+  animation: radialPulse 9s ease-in-out infinite;
+}
+
+.recharts-radial-bar-sector:hover {
+  filter: brightness(1.15);
+  animation-play-state: paused;
+}
+
+/* Keyframes for impressive chart element animations */
+@keyframes barBreath {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.03);
+  }
+}
+
+@keyframes pieGlow {
+  0%, 100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.04) saturate(1.1);
+  }
+}
+
+@keyframes areaShimmer {
+  0%, 100% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(1.05) contrast(1.05);
+  }
+}
+
+@keyframes lineGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 0px transparent);
+  }
+  50% {
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.1));
+  }
+}
+
+@keyframes radialPulse {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.06);
+  }
+}
+
+/* Tooltip enhancements */
+.recharts-tooltip-wrapper {
+  animation: tooltipSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes tooltipSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Legend animations */
+.recharts-legend-wrapper {
+  animation: legendFadeIn 1s ease-out forwards;
+}
+
+@keyframes legendFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grid and axis animations */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  animation: gridLinesDraw 1.5s ease-out forwards;
+}
+
+@keyframes gridLinesDraw {
+  from {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dasharray: 3;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Card container animations */
+.stats-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stats-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+
+.stats-card:hover .recharts-wrapper {
+  animation: pulseGlow 2s infinite;
+}
+
+/* Loading state animations */
+.chart-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+  .animated-chart {
+    animation-duration: 0.8s;
+  }
+  
+  .chart-container:hover .recharts-wrapper {
+    transform: none;
+  }
+}
+
+/* Simple data point animations */
+.recharts-dot {
+  transition: all 0.3s ease;
+}
+
+.recharts-dot:hover {
+  transform: scale(1.2);
+}
+
+.recharts-active-dot {
+  animation: simpleDotGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes simpleDotGlow {
+  from {
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+  to {
+    filter: drop-shadow(0 0 12px currentColor);
+  }
+}
+
+/* Chart title animations */
+.chart-title {
+  animation: titleSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes titleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Staggered impressive movement for different charts */
+.chart-row .animated-chart:nth-child(1) {
+  animation-delay: 0.1s, 0.5s;
+}
+
+.chart-row .animated-chart:nth-child(2) {
+  animation-delay: 0.2s, 2.0s;
+}
+
+.chart-row .animated-chart:nth-child(3) {
+  animation-delay: 0.3s, 3.5s;
+}
+
+.chart-row .animated-chart:nth-child(4) {
+  animation-delay: 0.4s, 1.2s;
+}
+
+/* Different timing for different rows to create organic feel */
+.chart-row:nth-child(odd) .chart-container {
+  animation-duration: 8s;
+}
+
+.chart-row:nth-child(even) .chart-container {
+  animation-duration: 10s;
+  animation-direction: reverse;
+}
+
+/* Special timing for different chart types */
+.chart-container:has(.recharts-pie-chart) {
+  animation-duration: 12s;
+}
+
+.chart-container:has(.recharts-bar-chart) {
+  animation-duration: 9s;
+}
+
+.chart-container:has(.recharts-area-chart) {
+  animation-duration: 11s;
+}
+
+.chart-container:has(.recharts-radial-bar-chart) {
+  animation-duration: 7s;
+}
+
+/* Ensure all charts are always visible */
+.animated-chart {
+  opacity: 1 !important;
+}
+
+.recharts-wrapper {
+  opacity: 1 !important;
+}
+
+/* Smooth transitions for data updates */
+.recharts-bar,
+.recharts-area,
+.recharts-line,
+.recharts-pie-sector {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Performance optimizations */
+.chart-container {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.recharts-wrapper {
+  will-change: transform, filter;
+}

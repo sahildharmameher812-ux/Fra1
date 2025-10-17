@@ -1,0 +1,657 @@
+/* ===================================================================
+   SMOOTH TRANSITIONS FOR FRA ATLAS - SIMPLE & ERROR-FREE
+   Just add class names to your components for instant smooth animations
+   =================================================================== */
+
+/* Universal smooth transitions - more selective to prevent black screen issues */
+button, a, .card, .MuiCard-root, .MuiButton-root, input, select, textarea {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Prevent universal transitions on animated elements */
+.slide-in-up,
+.slide-in-left, 
+.slide-in-right,
+.slide-in-down,
+.fade-in,
+.fade-in-fast,
+.fade-in-slow,
+.scale-in {
+  transition: none !important;
+}
+
+/* SLIDE IN ANIMATIONS - Just add these classes */
+.slide-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.6s ease-out forwards;
+  /* Fallback to ensure visibility */
+  animation-fill-mode: both;
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideLeft 0.6s ease-out forwards;
+  /* Fallback to ensure visibility */
+  animation-fill-mode: both;
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  animation: slideRight 0.6s ease-out forwards;
+  /* Fallback to ensure visibility */
+  animation-fill-mode: both;
+}
+
+.slide-in-down {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: slideDown 0.6s ease-out forwards;
+  /* Fallback to ensure visibility */
+  animation-fill-mode: both;
+}
+
+/* The actual animations */
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FADE ANIMATIONS - Just add these classes */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-fill-mode: both;
+}
+
+.fade-in-fast {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards;
+  animation-fill-mode: both;
+}
+
+.fade-in-slow {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-out forwards;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* SCALE ANIMATIONS - Just add these classes */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  animation: scaleIn 0.5s ease-out forwards;
+  animation-fill-mode: both;
+}
+
+@keyframes scaleIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* STAGGERED ANIMATIONS - Add delays for sequence */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+
+/* HOVER EFFECTS - Automatic smooth hovers */
+.card:hover,
+.MuiCard-root:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+.button:hover,
+.MuiButton-root:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+}
+
+/* LOADING ANIMATIONS */
+.loading {
+  opacity: 0.7;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f0f0f0;
+  border-top: 4px solid #2E7D32;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* BOUNCE EFFECT */
+.bounce {
+  animation: bounce 0.6s ease-out;
+}
+
+@keyframes bounce {
+  0% { transform: scale(0.95); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* PAGE TRANSITIONS */
+.page-enter {
+  opacity: 0;
+  transform: translateX(30px);
+  animation: pageEnter 0.5s ease-out forwards;
+}
+
+@keyframes pageEnter {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* SMOOTH SCROLLING */
+html {
+  scroll-behavior: smooth;
+}
+
+/* BETTER PERFORMANCE */
+.slide-in-up,
+.slide-in-left,
+.slide-in-right,
+.slide-in-down,
+.fade-in,
+.scale-in {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* FALLBACK FOR FAILED ANIMATIONS - Ensure content is always visible */
+@media (prefers-reduced-motion: reduce) {
+  .slide-in-up,
+  .slide-in-left,
+  .slide-in-right,
+  .slide-in-down,
+  .fade-in,
+  .fade-in-fast,
+  .fade-in-slow,
+  .scale-in {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+/* Emergency fallback - ensure animations complete properly */
+.slide-in-up,
+.slide-in-left,
+.slide-in-right,
+.slide-in-down,
+.fade-in,
+.fade-in-fast,
+.fade-in-slow,
+.scale-in {
+  animation-play-state: running;
+  /* Fallback timeout to ensure visibility */
+  visibility: visible;
+}
+
+/* MINIMAL FIX - Ensure dashboard loads properly */
+.engineer-dashboard {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.modern-dashboard-card,
+.dashboard-grid {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* CONTROLLED DASHBOARD ANIMATIONS */
+.dashboard-card-enter {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  animation: dashboardCardEnter 0.6s ease-out forwards;
+}
+
+.dashboard-card-enter-1 { animation-delay: 0.1s; }
+.dashboard-card-enter-2 { animation-delay: 0.2s; }
+.dashboard-card-enter-3 { animation-delay: 0.3s; }
+.dashboard-card-enter-4 { animation-delay: 0.4s; }
+.dashboard-card-enter-5 { animation-delay: 0.5s; }
+.dashboard-card-enter-6 { animation-delay: 0.6s; }
+
+@keyframes dashboardCardEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Safe hover effects for dashboard */
+.dashboard-card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Chart animation */
+.chart-fade-in {
+  opacity: 0;
+  animation: chartFadeIn 0.8s ease-out 0.3s forwards;
+}
+
+@keyframes chartFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header animations */
+.dashboard-header-slide {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: headerSlideDown 0.6s ease-out forwards;
+}
+
+@keyframes headerSlideDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gentle pulse for live indicators */
+.dashboard-live-pulse {
+  animation: dashboardPulse 3s ease-in-out infinite;
+}
+
+@keyframes dashboardPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+/* Shimmer effect for stat cards */
+.dashboard-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Number count-up animation */
+.dashboard-counter {
+  animation: counterPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes counterPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Gradient background animation */
+.dashboard-gradient-bg {
+  background: linear-gradient(45deg, #f5f7fa, #c3cfe2, #f5f7fa);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Continuous background color animations for charts - Orange, Green, Blue, White only */
+.chart-bg-blue {
+  background: linear-gradient(45deg, #ffffff, #e3f2fd, #2196f3, #ffffff);
+  background-size: 400% 400%;
+  animation: blueWave 6s ease infinite;
+}
+
+@keyframes blueWave {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 50% 0%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 100%; }
+}
+
+.chart-bg-green {
+  background: linear-gradient(45deg, #ffffff, #e8f5e8, #4caf50, #ffffff);
+  background-size: 400% 400%;
+  animation: greenWave 7s ease infinite;
+}
+
+@keyframes greenWave {
+  0%, 100% { background-position: 0% 50%; }
+  33% { background-position: 100% 0%; }
+  66% { background-position: 0% 100%; }
+}
+
+.chart-bg-orange {
+  background: linear-gradient(45deg, #ffffff, #fff3e0, #ff9800, #ffffff);
+  background-size: 400% 400%;
+  animation: orangeWave 8s ease infinite;
+}
+
+@keyframes orangeWave {
+  0%, 100% { background-position: 0% 50%; }
+  20% { background-position: 30% 20%; }
+  40% { background-position: 100% 50%; }
+  60% { background-position: 70% 80%; }
+  80% { background-position: 20% 100%; }
+}
+
+.chart-bg-purple {
+  background: linear-gradient(45deg, #ffffff, #e3f2fd, #2196f3, #4caf50, #ffffff);
+  background-size: 400% 400%;
+  animation: blueGreenWave 5s ease infinite;
+}
+
+@keyframes blueGreenWave {
+  0%, 100% { background-position: 0% 50%; }
+  25% { background-position: 50% 100%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 0%; }
+}
+
+.chart-bg-teal {
+  background: linear-gradient(45deg, #ffffff, #e8f5e8, #4caf50, #ff9800, #ffffff);
+  background-size: 400% 400%;
+  animation: greenOrangeWave 9s ease infinite;
+}
+
+@keyframes greenOrangeWave {
+  0%, 100% { background-position: 0% 50%; }
+  16% { background-position: 25% 25%; }
+  32% { background-position: 75% 0%; }
+  48% { background-position: 100% 75%; }
+  64% { background-position: 50% 100%; }
+  80% { background-position: 0% 75%; }
+}
+
+.chart-bg-pink {
+  background: linear-gradient(45deg, #ffffff, #fff3e0, #ff9800, #e8f5e8, #ffffff);
+  background-size: 400% 400%;
+  animation: orangeGreenWave 6.5s ease infinite;
+}
+
+@keyframes orangeGreenWave {
+  0%, 100% { background-position: 0% 50%; }
+  30% { background-position: 70% 30%; }
+  60% { background-position: 30% 70%; }
+}
+
+.chart-bg-indigo {
+  background: linear-gradient(45deg, #ffffff, #e3f2fd, #2196f3, #ff9800, #4caf50, #ffffff);
+  background-size: 400% 400%;
+  animation: allColorsWave 10s ease infinite;
+}
+
+@keyframes allColorsWave {
+  0%, 100% { background-position: 0% 50%; }
+  12.5% { background-position: 15% 15%; }
+  25% { background-position: 50% 0%; }
+  37.5% { background-position: 85% 15%; }
+  50% { background-position: 100% 50%; }
+  62.5% { background-position: 85% 85%; }
+  75% { background-position: 50% 100%; }
+  87.5% { background-position: 15% 85%; }
+}
+
+/* SIH-LEVEL ADVANCED CHART ANIMATIONS */
+
+/* Chart container with glowing border */
+.sih-chart-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.sih-chart-container::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff9800, #4caf50, #2196f3, #ff9800);
+  border-radius: 22px;
+  opacity: 0;
+  z-index: -1;
+  animation: sihBorderGlow 4s linear infinite;
+  transition: opacity 0.3s ease;
+}
+
+.sih-chart-container:hover::before {
+  opacity: 0.8;
+}
+
+@keyframes sihBorderGlow {
+  0% { transform: rotate(0deg); background-position: 0% 50%; }
+  25% { background-position: 50% 0%; }
+  50% { background-position: 100% 50%; }
+  75% { background-position: 50% 100%; }
+  100% { transform: rotate(360deg); background-position: 0% 50%; }
+}
+
+/* Data visualization loading effect */
+.sih-data-loader {
+  position: relative;
+  overflow: hidden;
+}
+
+.sih-data-loader::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.3), rgba(76, 175, 80, 0.3), transparent);
+  animation: dataProcessing 3s ease-in-out infinite;
+}
+
+@keyframes dataProcessing {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Advanced hover effects for charts */
+.sih-chart-hover {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+
+.sih-chart-hover:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Particle effect for charts */
+.sih-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sih-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #2196f3, transparent);
+  border-radius: 50%;
+  animation: particleFloat 6s linear infinite;
+  opacity: 0;
+}
+
+.sih-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.sih-particle:nth-child(2) { left: 30%; animation-delay: 1s; }
+.sih-particle:nth-child(3) { left: 50%; animation-delay: 2s; }
+.sih-particle:nth-child(4) { left: 70%; animation-delay: 3s; }
+.sih-particle:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+@keyframes particleFloat {
+  0% { transform: translateY(100px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100px); opacity: 0; }
+}
+
+/* Chart title with advanced styling */
+.sih-chart-title {
+  position: relative;
+  background: linear-gradient(135deg, #2196f3, #4caf50, #ff9800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 18px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% { filter: drop-shadow(0 0 5px rgba(33, 150, 243, 0.3)); }
+  100% { filter: drop-shadow(0 0 15px rgba(76, 175, 80, 0.5)); }
+}
+
+/* Advanced loading skeleton for charts */
+.sih-chart-skeleton {
+  position: relative;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeletonLoad 2s infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeletonLoad {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Holographic effect for premium charts */
+.sih-holographic {
+  position: relative;
+  background: linear-gradient(45deg, 
+    rgba(255, 255, 255, 0.1), 
+    rgba(33, 150, 243, 0.1), 
+    rgba(76, 175, 80, 0.1), 
+    rgba(255, 152, 0, 0.1)
+  );
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sih-holographic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: holographicSweep 4s ease-in-out infinite;
+}
+
+@keyframes holographicSweep {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: -100%; }
+}
+
+/* FOR MOBILE DEVICES - FASTER ANIMATIONS */
+@media (max-width: 768px) {
+  button, a, .card, .MuiCard-root, .MuiButton-root, input, select, textarea {
+    transition-duration: 0.2s !important;
+  }
+  
+  .slide-in-up,
+  .slide-in-left,
+  .slide-in-right,
+  .slide-in-down {
+    animation-duration: 0.4s !important;
+  }
+}

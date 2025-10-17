@@ -1,0 +1,285 @@
+{
+  "state": "Tripura",
+  "metadata": {
+    "total_area_sq_km": 10486,
+    "total_districts": 8,
+    "tribal_population_percentage": 31.8,
+    "forest_cover_percentage": 73.68,
+    "major_tribal_groups": ["Tripuri", "Reang", "Jamatia", "Chakma", "Halam"],
+    "last_updated": "2024-01-15",
+    "data_source": "Ministry of Tribal Affairs & Tripura Forest Department"
+  },
+  "district_wise_data": [
+    {
+      "district": "West Tripura",
+      "total_area_hectares": 298300,
+      "tribal_population": 234567,
+      "land_classification": {
+        "tribal_suitable_land": {
+          "area_hectares": 189400,
+          "percentage": 63.5,
+          "current_status": "Actively being allocated under FRA",
+          "major_land_types": ["Hill Forest", "Community Forest", "Jhum Land"],
+          "villages_covered": 245,
+          "fra_claims": {
+            "total_submitted": 2890,
+            "approved": 2234,
+            "pending": 456,
+            "rejected": 200
+          }
+        },
+        "non_tribal_land": {
+          "area_hectares": 108900,
+          "percentage": 36.5,
+          "land_types": {
+            "agricultural": 65400,
+            "urban": 18900,
+            "industrial": 4500,
+            "water_bodies": 12100,
+            "other": 8000
+          }
+        }
+      },
+      "forest_data": {
+        "dense_forest": 156700,
+        "open_forest": 87600,
+        "scrub": 23400,
+        "total_forest_cover": 267700
+      },
+      "tribal_villages": [
+        {
+          "village_name": "Khumulwng",
+          "block": "Sadar",
+          "tribal_families": 456,
+          "dominant_tribe": "Tripuri",
+          "land_granted_hectares": 567.8,
+          "claim_types": ["IFR", "CR", "CFR"],
+          "coordinates": [91.3815, 23.8315]
+        },
+        {
+          "village_name": "Mandwai",
+          "block": "Mohanpur",
+          "tribal_families": 234,
+          "dominant_tribe": "Reang",
+          "land_granted_hectares": 298.4,
+          "claim_types": ["IFR", "CR"],
+          "coordinates": [91.4200, 23.9500]
+        }
+      ]
+    },
+    {
+      "district": "North Tripura",
+      "total_area_hectares": 162800,
+      "tribal_population": 156789,
+      "land_classification": {
+        "tribal_suitable_land": {
+          "area_hectares": 121400,
+          "percentage": 74.6,
+          "current_status": "High Potential for FRA Expansion",
+          "major_land_types": ["Hill Forest", "Shifting Cultivation Areas", "Community Grazing"],
+          "villages_covered": 189,
+          "fra_claims": {
+            "total_submitted": 1876,
+            "approved": 1234,
+            "pending": 456,
+            "rejected": 186
+          }
+        },
+        "non_tribal_land": {
+          "area_hectares": 41400,
+          "percentage": 25.4,
+          "land_types": {
+            "agricultural": 28900,
+            "urban": 6700,
+            "water_bodies": 4200,
+            "other": 1600
+          }
+        }
+      }
+    },
+    {
+      "district": "South Tripura",
+      "total_area_hectares": 158900,
+      "tribal_population": 98456,
+      "land_classification": {
+        "tribal_suitable_land": {
+          "area_hectares": 95400,
+          "percentage": 60.0,
+          "current_status": "Moderate FRA Implementation",
+          "major_land_types": ["Forest Land", "Jhum Cultivation", "Community Land"],
+          "villages_covered": 167,
+          "fra_claims": {
+            "total_submitted": 1456,
+            "approved": 987,
+            "pending": 298,
+            "rejected": 171
+          }
+        },
+        "non_tribal_land": {
+          "area_hectares": 63500,
+          "percentage": 40.0,
+          "land_types": {
+            "agricultural": 42300,
+            "urban": 12800,
+            "water_bodies": 6100,
+            "other": 2300
+          }
+        }
+      }
+    },
+    {
+      "district": "Dhalai",
+      "total_area_hectares": 235600,
+      "tribal_population": 134567,
+      "land_classification": {
+        "tribal_suitable_land": {
+          "area_hectares": 176700,
+          "percentage": 75.0,
+          "current_status": "Priority Area for FRA Implementation",
+          "major_land_types": ["Dense Hill Forest", "Tribal Settlements", "Sacred Groves"],
+          "villages_covered": 298,
+          "fra_claims": {
+            "total_submitted": 2234,
+            "approved": 1678,
+            "pending": 378,
+            "rejected": 178
+          }
+        },
+        "non_tribal_land": {
+          "area_hectares": 58900,
+          "percentage": 25.0,
+          "land_types": {
+            "agricultural": 38900,
+            "urban": 8900,
+            "water_bodies": 7600,
+            "other": 3500
+          }
+        }
+      }
+    }
+  ],
+  "tribal_groups_distribution": {
+    "Tripuri": {
+      "population": 543848,
+      "districts": ["West Tripura", "North Tripura", "South Tripura"],
+      "traditional_occupation": "Jhum Cultivation, Handicrafts, Government Service",
+      "land_rights_status": "78% covered under FRA",
+      "special_notes": "Dominant tribe with strong political representation"
+    },
+    "Reang": {
+      "population": 188220,
+      "districts": ["North Tripura", "South Tripura", "Dhalai"],
+      "traditional_occupation": "Shifting Cultivation, Forest Produce Collection",
+      "land_rights_status": "65% covered under FRA",
+      "special_notes": "Often faces displacement issues, needs priority attention"
+    },
+    "Jamatia": {
+      "population": 83333,
+      "districts": ["West Tripura", "South Tripura"],
+      "traditional_occupation": "Agriculture, Weaving",
+      "land_rights_status": "71% covered under FRA",
+      "special_notes": "Strong cultural practices related to forest conservation"
+    },
+    "Chakma": {
+      "population": 97000,
+      "districts": ["South Tripura", "West Tripura"],
+      "traditional_occupation": "Settled Agriculture, Education",
+      "land_rights_status": "82% covered under FRA",
+      "special_notes": "Buddhist community with unique land use patterns"
+    },
+    "Halam": {
+      "population": 54777,
+      "districts": ["North Tripura", "Dhalai"],
+      "traditional_occupation": "Hill Agriculture, Forest Collection",
+      "land_rights_status": "58% covered under FRA (Requires Focus)",
+      "special_notes": "Remote locations, accessibility challenges"
+    }
+  },
+  "jhum_cultivation_analysis": {
+    "total_jhum_area_hectares": 45600,
+    "active_jhum_cultivators": 12340,
+    "traditional_cycle_years": 8,
+    "current_cycle_years": 4,
+    "sustainability_concerns": "Shortened cycles leading to soil degradation",
+    "fra_integration": "67% of jhum areas covered under CFR",
+    "recommended_interventions": [
+      "Agroforestry promotion",
+      "Terrace cultivation training",
+      "Alternative livelihood options"
+    ]
+  },
+  "scheme_integration": {
+    "PM_KISAN_eligible": 34567,
+    "Jal_Jeevan_Mission_coverage": 78900,
+    "MGNREGA_job_cards": 156700,
+    "DAJGUA_interventions": 45,
+    "Pradhan_Mantri_Awas_beneficiaries": 8900,
+    "special_schemes": {
+      "Tripura_Tribal_Development": 23400,
+      "Hill_Area_Development": 45600
+    }
+  },
+  "satellite_imagery_analysis": {
+    "analysis_period": "2020-2024",
+    "key_findings": {
+      "forest_cover_change": "-1.2% decrease (concerning trend)",
+      "jhum_cultivation_intensity": "+8.4% increase",
+      "tribal_settlement_consolidation": "+3.1% increase",
+      "bamboo_forest_expansion": "+15.2% increase"
+    },
+    "land_use_accuracy": 91.8,
+    "ai_model_confidence": 0.87,
+    "special_challenges": "Hilly terrain and cloud cover affecting satellite analysis"
+  },
+  "biodiversity_hotspots": [
+    {
+      "name": "Clouded Leopard National Park",
+      "area_hectares": 5400,
+      "tribal_villages_nearby": 23,
+      "fra_status": "CFR rights granted to 18 villages",
+      "conservation_conflict": "Low - Good community participation"
+    },
+    {
+      "name": "Sepahijala Wildlife Sanctuary",
+      "area_hectares": 1850,
+      "tribal_villages_nearby": 12,
+      "fra_status": "Mixed - Some claims pending",
+      "conservation_conflict": "Moderate - Need for balance"
+    }
+  ],
+  "priority_interventions": [
+    {
+      "area": "Reang Settlement Areas (North Tripura)",
+      "issue": "Displacement and land insecurity",
+      "recommended_action": "Accelerated FRA with resettlement package",
+      "estimated_families_benefited": 2340,
+      "budget_required_lakhs": 1200
+    },
+    {
+      "area": "Halam Villages (Dhalai District)",
+      "issue": "Remote location and limited FRA awareness",
+      "recommended_action": "Community mobilization with accessibility improvement",
+      "estimated_families_benefited": 890,
+      "budget_required_lakhs": 450
+    },
+    {
+      "area": "Jhum Areas (All Districts)",
+      "issue": "Unsustainable shifting cultivation",
+      "recommended_action": "CFR implementation with agroforestry promotion",
+      "estimated_families_benefited": 4500,
+      "budget_required_lakhs": 2300
+    }
+  ],
+  "bamboo_economy": {
+    "bamboo_area_hectares": 89000,
+    "bamboo_producing_villages": 456,
+    "annual_production_tons": 234000,
+    "market_value_crores": 145,
+    "fra_integration": "78% bamboo areas have CFR rights",
+    "value_addition_opportunities": [
+      "Bamboo handicrafts",
+      "Construction materials",
+      "Paper industry"
+    ]
+  }
+}

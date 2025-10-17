@@ -1,0 +1,134 @@
+/* REFINED DASHBOARD FIX - PRESERVE COLORS AND FUNCTIONALITY */
+
+/* Force light background for main elements */
+body, #root, .App {
+  background: #f5f7fa !important;
+}
+
+.engineer-dashboard {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  min-height: 100vh !important;
+  color: #2c3e50;
+}
+
+/* Ensure cards are visible with white backgrounds */
+.modern-dashboard-card,
+.MuiCard-root {
+  background: rgba(255, 255, 255, 0.95) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dashboard grid must be visible */
+.dashboard-grid {
+  display: grid !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Text colors for readability - but preserve chart text */
+.engineer-dashboard .MuiTypography-root:not(.recharts-text),
+.stats-bar *,
+.chart-title {
+  color: #2c3e50 !important;
+}
+
+/* Remove only the problematic slide animations */
+.slide-in-up,
+.slide-in-left,
+.slide-in-right,
+.slide-in-down,
+.fade-in,
+.scale-in,
+.page-enter {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  visibility: visible !important;
+}
+
+/* Stats bar styling */
+.stats-bar {
+  background: rgba(255, 255, 255, 0.95) !important;
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Chart containers */
+.chart-wrapper,
+.area-chart-container {
+  background: white !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* PRESERVE ALL CHART AND MAP COLORS */
+canvas,
+svg,
+path,
+circle,
+rect,
+.leaflet-container,
+.leaflet-map-pane,
+.leaflet-tile,
+.leaflet-layer,
+.recharts-wrapper,
+.recharts-surface {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Preserve chart element colors */
+svg text,
+.recharts-text,
+.recharts-cartesian-axis-tick-value {
+  fill: currentColor !important;
+}
+
+/* Icon colors for KPI cards */
+.metric-card-orange .MuiSvgIcon-root {
+  color: #f39c12 !important;
+}
+
+.metric-card-blue .MuiSvgIcon-root {
+  color: #3498db !important;
+}
+
+.metric-card-teal .MuiSvgIcon-root {
+  color: #1abc9c !important;
+}
+
+/* Trend indicators */
+.MuiSvgIcon-root[data-testid="TrendingUpIcon"] {
+  color: #27ae60 !important;
+}
+
+.MuiSvgIcon-root[data-testid="TrendingDownIcon"] {
+  color: #e74c3c !important;
+}
+
+/* Live indicator */
+.live-dot {
+  background: #27ae60 !important;
+  animation: pulse 10s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Progress bars */
+.progress-fill {
+  opacity: 1 !important;
+}
+
+/* Map controls */
+.leaflet-control,
+.leaflet-bar {
+  opacity: 1 !important;
+  background: white !important;
+}

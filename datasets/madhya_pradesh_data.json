@@ -1,0 +1,209 @@
+{
+  "state": "Madhya Pradesh",
+  "metadata": {
+    "total_area_sq_km": 308245,
+    "total_districts": 52,
+    "tribal_population_percentage": 21.1,
+    "forest_cover_percentage": 25.1,
+    "major_tribal_groups": ["Gond", "Bhil", "Korku", "Baiga", "Saharia"],
+    "last_updated": "2024-01-15",
+    "data_source": "Ministry of Tribal Affairs & Forest Survey of India"
+  },
+  "district_wise_data": [
+    {
+      "district": "Bhopal",
+      "total_area_hectares": 270540,
+      "tribal_population": 89543,
+      "land_classification": {
+        "tribal_suitable_land": {
+          "area_hectares": 45600,
+          "percentage": 16.9,
+          "current_status": "Available for FRA Claims",
+          "major_land_types": ["Forest Land", "Community Land", "Grazing Land"],
+          "villages_covered": 156,
+          "fra_claims": {
+            "total_submitted": 1243,
+            "approved": 867,
+            "pending": 298,
+            "rejected": 78
+          }
+        },
+        "non_tribal_land": {
+          "area_hectares": 224940,
+          "percentage": 83.1,
+          "land_types": {
+            "agricultural": 145600,
+            "urban": 32400,
+            "industrial": 18900,
+            "water_bodies": 12540,
+            "other": 15500
+          }
+        }
+      },
+      "forest_data": {
+        "dense_forest": 28750,
+        "open_forest": 16850,
+        "scrub": 8200,
+        "total_forest_cover": 53800
+      },
+      "satellite_analysis": {
+        "last_analyzed": "2024-01-10",
+        "vegetation_index_avg": 0.67,
+        "change_detection": "Stable forest cover with 2.3% increase in tribal settlements"
+      },
+      "fra_villages": [
+        {
+          "village_name": "Jhiriya",
+          "block": "Huzur",
+          "tribal_families": 134,
+          "land_granted_hectares": 245.6,
+          "claim_types": ["IFR", "CR"],
+          "coordinates": [77.4126, 23.2599]
+        },
+        {
+          "village_name": "Khajuraho Kalan",
+          "block": "Berasia",
+          "tribal_families": 89,
+          "land_granted_hectares": 189.3,
+          "claim_types": ["IFR", "CFR"],
+          "coordinates": [77.2811, 23.3441]
+        }
+      ]
+    },
+    {
+      "district": "Indore",
+      "total_area_hectares": 382640,
+      "tribal_population": 156789,
+      "land_classification": {
+        "tribal_suitable_land": {
+          "area_hectares": 67800,
+          "percentage": 17.7,
+          "current_status": "Partially Allocated",
+          "major_land_types": ["Forest Land", "Wasteland", "Community Grazing"],
+          "villages_covered": 234,
+          "fra_claims": {
+            "total_submitted": 2156,
+            "approved": 1567,
+            "pending": 445,
+            "rejected": 144
+          }
+        },
+        "non_tribal_land": {
+          "area_hectares": 314840,
+          "percentage": 82.3,
+          "land_types": {
+            "agricultural": 198500,
+            "urban": 45600,
+            "industrial": 34200,
+            "water_bodies": 18540,
+            "other": 18000
+          }
+        }
+      }
+    },
+    {
+      "district": "Jabalpur",
+      "total_area_hectares": 501200,
+      "tribal_population": 245678,
+      "land_classification": {
+        "tribal_suitable_land": {
+          "area_hectares": 125400,
+          "percentage": 25.0,
+          "current_status": "High Priority for FRA Implementation",
+          "major_land_types": ["Dense Forest", "Open Forest", "Tribal Settlements"],
+          "villages_covered": 345,
+          "fra_claims": {
+            "total_submitted": 3245,
+            "approved": 2156,
+            "pending": 789,
+            "rejected": 300
+          }
+        },
+        "non_tribal_land": {
+          "area_hectares": 375800,
+          "percentage": 75.0,
+          "land_types": {
+            "agricultural": 245600,
+            "urban": 56700,
+            "industrial": 28900,
+            "water_bodies": 25600,
+            "other": 19000
+          }
+        }
+      }
+    }
+  ],
+  "tribal_groups_distribution": {
+    "Gond": {
+      "population": 4357009,
+      "districts": ["Jabalpur", "Mandla", "Dindori", "Seoni", "Chhindwara"],
+      "traditional_occupation": "Agriculture, Forest Produce Collection",
+      "land_rights_status": "87% covered under FRA"
+    },
+    "Bhil": {
+      "population": 4618068,
+      "districts": ["Khargone", "Barwani", "Dhar", "Jhabua", "Alirajpur"],
+      "traditional_occupation": "Agriculture, Animal Husbandry",
+      "land_rights_status": "72% covered under FRA"
+    },
+    "Korku": {
+      "population": 574300,
+      "districts": ["Khandwa", "Betul", "Chhindwara", "Harda"],
+      "traditional_occupation": "Forest Produce, Agriculture",
+      "land_rights_status": "68% covered under FRA"
+    },
+    "Baiga": {
+      "population": 285700,
+      "districts": ["Mandla", "Dindori", "Shahdol", "Umaria"],
+      "traditional_occupation": "Shifting Cultivation, Forest Collection",
+      "land_rights_status": "45% covered under FRA (Special Focus Required)"
+    },
+    "Saharia": {
+      "population": 610009,
+      "districts": ["Shivpuri", "Guna", "Morena", "Gwalior"],
+      "traditional_occupation": "Agriculture, Labor",
+      "land_rights_status": "78% covered under FRA"
+    }
+  },
+  "scheme_integration": {
+    "PM_KISAN_eligible": 145600,
+    "Jal_Jeevan_Mission_coverage": 67800,
+    "MGNREGA_job_cards": 234500,
+    "DAJGUA_interventions": 89,
+    "Pradhan_Mantri_Awas_beneficiaries": 12340
+  },
+  "satellite_imagery_analysis": {
+    "analysis_period": "2020-2024",
+    "key_findings": {
+      "forest_cover_change": "+3.2% increase",
+      "tribal_settlement_expansion": "+5.7% increase",
+      "agricultural_land_conversion": "-2.1% decrease",
+      "water_body_changes": "+1.8% increase"
+    },
+    "land_use_accuracy": 94.2,
+    "ai_model_confidence": 0.89
+  },
+  "priority_interventions": [
+    {
+      "area": "Baiga Chak (Dindori District)",
+      "issue": "Limited FRA coverage for Baiga community",
+      "recommended_action": "Accelerated FRA implementation with community mobilization",
+      "estimated_families_benefited": 1245,
+      "budget_required_lakhs": 450
+    },
+    {
+      "area": "Bhil Belt (Alirajpur-Jhabua)",
+      "issue": "Water scarcity affecting agricultural productivity",
+      "recommended_action": "Jal Jeevan Mission integration with FRA land allocation",
+      "estimated_families_benefited": 3400,
+      "budget_required_lakhs": 890
+    },
+    {
+      "area": "Korku Territory (Khandwa)",
+      "issue": "Limited access to forest produce markets",
+      "recommended_action": "CFR rights implementation with market linkage",
+      "estimated_families_benefited": 2100,
+      "budget_required_lakhs": 650
+    }
+  ]
+}

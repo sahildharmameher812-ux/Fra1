@@ -1,0 +1,587 @@
+/* Stunning Dashboard CSS - SIH Winner Level */
+
+/* Keyframe animations */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.05); 
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(25, 118, 210, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(25, 118, 210, 0.6), 0 0 30px rgba(25, 118, 210, 0.4);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Stunning stat cards */
+.stat-card-stunning {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: fadeInUp 0.6s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card-stunning:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card-stunning:nth-child(1) { animation-delay: 0.1s; }
+.stat-card-stunning:nth-child(2) { animation-delay: 0.2s; }
+.stat-card-stunning:nth-child(3) { animation-delay: 0.3s; }
+.stat-card-stunning:nth-child(4) { animation-delay: 0.4s; }
+.stat-card-stunning:nth-child(5) { animation-delay: 0.5s; }
+.stat-card-stunning:nth-child(6) { animation-delay: 0.6s; }
+
+.stat-card-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.8s ease;
+}
+
+.stat-card-stunning:hover .stat-card-glow::before {
+  left: 100%;
+}
+
+/* Stunning chart cards */
+.chart-card-stunning {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: slideInLeft 0.8s ease-out forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.chart-card-stunning:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.chart-card-stunning::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #1976d2, #4caf50, #ff9800, #1976d2);
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: gradientShift 10s ease infinite;
+  background-size: 400% 400%;
+}
+
+.chart-card-stunning:hover::before {
+  opacity: 0.6;
+}
+
+/* Chart animations */
+.chart-card-stunning:nth-child(1) { animation-delay: 0.2s; }
+.chart-card-stunning:nth-child(2) { animation-delay: 0.4s; }
+.chart-card-stunning:nth-child(3) { animation-delay: 0.6s; }
+
+/* Live pulse animation */
+.live-pulse {
+  animation: pulse 10s infinite;
+}
+
+/* Header animations */
+.MuiTypography-h2 {
+  animation: bounceIn 1s ease-out;
+}
+
+/* Grid animations */
+.MuiGrid-item {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.MuiGrid-item:nth-child(1) { animation-delay: 0.1s; }
+.MuiGrid-item:nth-child(2) { animation-delay: 0.2s; }
+.MuiGrid-item:nth-child(3) { animation-delay: 0.3s; }
+.MuiGrid-item:nth-child(4) { animation-delay: 0.4s; }
+.MuiGrid-item:nth-child(5) { animation-delay: 0.5s; }
+.MuiGrid-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsive animations */
+@media (max-width: 768px) {
+  .stat-card-stunning {
+    animation-duration: 0.4s;
+  }
+  
+  .chart-card-stunning {
+    animation-duration: 0.6s;
+  }
+  
+  .stat-card-stunning:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  .chart-card-stunning:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* Loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 10s infinite;
+}
+
+/* Custom scrollbar for charts */
+.recharts-wrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.recharts-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.recharts-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #1976d2, #4caf50);
+  border-radius: 4px;
+}
+
+.recharts-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #1565c0, #43a047);
+}
+
+/* Tooltip animations */
+.recharts-tooltip-wrapper {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Legend animations */
+.recharts-legend-wrapper {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+/* Success indicators */
+.success-glow {
+  animation: glow 10s ease-in-out infinite;
+}
+
+/* Floating elements */
+.floating-element {
+  animation: float 10s ease-in-out infinite;
+}
+
+/* Glass morphism effect */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(45deg, #1976d2, #4caf50, #ff9800);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 10s ease infinite;
+}
+
+/* Chart entry animations - FIXED FOR VISIBILITY */
+.recharts-bar-rectangle {
+  animation: bounceIn 0.8s ease-out;
+}
+
+.recharts-line {
+  /* Removed problematic stroke-dasharray animation */
+  animation: none;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.recharts-area {
+  opacity: 1 !important; /* Force visibility */
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.recharts-pie {
+  opacity: 1 !important; /* Force pie chart visibility */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Interactive hover effects */
+.interactive-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.interactive-hover:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* Success animation */
+.success-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+.success-animation::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.3), transparent);
+  animation: successSweep 10s ease-in-out infinite;
+}
+
+@keyframes successSweep {
+  0% { left: -100%; }
+  50% { left: 0%; }
+  100% { left: 100%; }
+}
+
+/* CHART VISIBILITY FIXES */
+.chart-fade-in {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.sih-data-loader {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.recharts-responsive-container {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Force all chart elements to be visible */
+.recharts-surface {
+  opacity: 1 !important;
+}
+
+.recharts-layer {
+  opacity: 1 !important;
+}
+
+.recharts-cartesian-grid {
+  opacity: 1 !important;
+}
+
+.recharts-xAxis, .recharts-yAxis {
+  opacity: 1 !important;
+}
+
+.recharts-text {
+  opacity: 1 !important;
+  fill: #666 !important;
+}
+
+/* Ensure chart containers have proper dimensions - CRITICAL FIX */
+.chart-card-stunning .MuiBox-root {
+  min-height: 350px !important;
+  height: auto !important;
+  position: relative;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+/* Fix chart card layout issues */
+.chart-card-stunning {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 400px !important;
+}
+
+/* Force ResponsiveContainer to be visible and properly sized */
+.recharts-responsive-container {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 300px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Fix specific chart issues */
+.recharts-wrapper {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+}
+
+/* Override any problematic animations */
+@media (prefers-reduced-motion: reduce) {
+  .recharts-area,
+  .recharts-line,
+  .recharts-bar-rectangle,
+  .recharts-pie {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* FINAL OVERRIDE - Force all charts to be visible */
+.recharts-surface,
+.recharts-layer,
+.recharts-area,
+.recharts-line,
+.recharts-bar-rectangle,
+.recharts-pie,
+.recharts-pie-sector,
+.recharts-radar,
+.recharts-scatter-dots,
+.recharts-cartesian-grid,
+.recharts-xAxis,
+.recharts-yAxis,
+.recharts-polar-grid,
+.recharts-polar-angle-axis,
+.recharts-polar-radius-axis {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Grid Layout Override */
+.MuiGrid-container {
+  width: 100% !important;
+}
+
+.MuiGrid-item {
+  flex-basis: auto !important;
+}
+
+/* Card fixes */
+.MuiCard-root {
+  overflow: visible !important;
+}
+
+/* PROFESSIONAL DASHBOARD SPACING - EXACT REQUIREMENTS */
+.MuiContainer-root {
+  padding: 0 !important;
+}
+
+.MuiGrid-container {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.MuiGrid-item {
+  padding: 16px !important;
+}
+
+/* Card Spacing - 16px margins, 24px internal padding */
+.MuiCard-root {
+  margin-bottom: 0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+  border-radius: 16px !important;
+}
+
+.MuiCard-root:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15) !important;
+  transform: translateY(-2px) !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Chart Container Spacing */
+.recharts-responsive-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Typography Spacing */
+.MuiTypography-h6 {
+  margin-bottom: 0 !important;
+}
+
+/* Internal Card Padding - Exactly 24px */
+.MuiCardContent-root {
+  padding: 24px !important;
+}
+
+.MuiCardContent-root:last-child {
+  padding-bottom: 24px !important;
+}
+
+/* Grid Spacing Override - 16px margins */
+.MuiGrid-spacing-xs-2 > .MuiGrid-item {
+  padding: 16px !important;
+}
+
+/* Ensure consistent card margins */
+.MuiGrid-root.MuiGrid-container {
+  margin-left: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Dashboard edges - 16px from edges */
+.MuiGrid-root.MuiGrid-item {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  padding-top: 16px !important;
+  padding-bottom: 0 !important;
+}
+
+/* Professional Layout */
+Body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Roboto', sans-serif !important;
+}
+
+/* Clean Chart Appearance */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #f0f0f0 !important;
+  stroke-dasharray: 3 3 !important;
+}
+
+.recharts-text {
+  fill: #666 !important;
+  font-size: 12px !important;
+  font-family: 'Inter', 'Roboto', sans-serif !important;
+}
+
+/* EXACT SPACING ENFORCEMENT */
+
+/* Dashboard container spacing */
+.dashboard-container {
+  padding: 16px !important;
+}
+
+/* All cards must have proper spacing */
+[class*="MuiCard"] {
+  border-radius: 16px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+}
+
+/* Grid items exact spacing */
+.MuiGrid-grid-xs-12,
+.MuiGrid-grid-xs-6,
+.MuiGrid-grid-xs-4,
+.MuiGrid-grid-xs-3,
+.MuiGrid-grid-xs-2,
+.MuiGrid-grid-md-2,
+.MuiGrid-grid-lg-4,
+.MuiGrid-grid-lg-8 {
+  padding: 16px !important;
+}
+
+/* Force clean spacing on all elements */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure no margin collapse */
+.MuiBox-root {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+/* Header spacing */
+.dashboard-header {
+  margin: 16px;
+  padding: 32px 24px;
+}
+
+/* Chart wrapper spacing */
+.chart-wrapper {
+  padding: 24px;
+}
+
+/* KPI card internal spacing */
+.kpi-card-content {
+  padding: 24px !important;
+  gap: 16px;
+}
+
+/* Clean modern appearance */
+.modern-spacing {
+  margin: 16px;
+  padding: 24px;
+  border-radius: 16px;
+}

@@ -1,0 +1,230 @@
+/* EMERGENCY DASHBOARD FIX - OVERRIDE ALL DARK STYLES */
+
+/* Force light background */
+body, #root, .App {
+  background: #f5f7fa !important;
+  color: #2c3e50 !important;
+}
+
+/* Dashboard container */
+.engineer-dashboard {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  color: #2c3e50 !important;
+  min-height: 100vh !important;
+}
+
+/* All cards must be visible and white */
+.modern-dashboard-card,
+.MuiCard-root,
+.MuiPaper-root {
+  background: white !important;
+  color: #2c3e50 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Text colors - but preserve chart and icon colors */
+.engineer-dashboard .MuiTypography-root,
+.engineer-dashboard h1, 
+.engineer-dashboard h2, 
+.engineer-dashboard h3, 
+.engineer-dashboard h4, 
+.engineer-dashboard h5, 
+.engineer-dashboard h6,
+.engineer-dashboard p:not(.recharts-text),
+.engineer-dashboard span:not(.recharts-text),
+.stats-bar *,
+.stat-label,
+.stat-value,
+.chart-title {
+  color: #2c3e50 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Preserve SVG and chart text colors */
+svg text,
+.recharts-text,
+.recharts-label {
+  color: inherit !important;
+  fill: inherit !important;
+}
+
+/* Remove only problematic animations, keep colors and maps */
+.slide-in-up,
+.slide-in-left,
+.slide-in-right,
+.slide-in-down,
+.fade-in,
+.fade-in-fast,
+.fade-in-slow,
+.scale-in,
+.page-enter {
+  animation: none !important;
+  transition: opacity 0.3s ease !important;
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Keep transitions for interactive elements */
+button, .MuiButton-root, .card-hover {
+  transition: all 0.3s ease !important;
+}
+
+/* Grid must be visible */
+.dashboard-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 20px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Stats bar */
+.stats-bar {
+  background: white !important;
+  color: #2c3e50 !important;
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Charts */
+.chart-wrapper,
+.area-chart-container {
+  background: white !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Override any Material-UI dark theme */
+.MuiCssBaseline-root {
+  background-color: #f5f7fa !important;
+}
+
+/* RESTORE COLORS FOR CHARTS AND MAPS */
+/* Chart elements should keep their colors */
+.recharts-wrapper,
+.recharts-surface,
+.recharts-cartesian-grid,
+.recharts-area,
+path[fill],
+path[stroke],
+circle[fill],
+rect[fill],
+text[fill] {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Chart.js canvas elements */
+canvas {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Map elements */
+.leaflet-container,
+.leaflet-map-pane,
+.leaflet-tile,
+.leaflet-layer {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Chart colors - ensure they display */
+.recharts-area path {
+  fill: inherit !important;
+  stroke: inherit !important;
+}
+
+.recharts-bar rect {
+  fill: inherit !important;
+}
+
+/* Progress bars and indicators */
+.progress-fill {
+  background: inherit !important;
+  opacity: 1 !important;
+}
+
+/* Icon colors */
+.MuiSvgIcon-root {
+  color: inherit !important;
+}
+
+/* Restore chart legend colors */
+.recharts-legend-item {
+  color: #2c3e50 !important;
+}
+
+/* Color swatches and indicators */
+.live-dot {
+  background: #27ae60 !important;
+}
+
+/* Chart tooltips */
+.recharts-tooltip-wrapper {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Doughnut chart colors */
+.doughnut-chart canvas {
+  opacity: 1 !important;
+}
+
+/* Area chart gradients */
+defs linearGradient stop {
+  stop-color: inherit !important;
+  stop-opacity: inherit !important;
+}
+
+/* Specific color fixes for dashboard KPI cards */
+.metric-card-orange .MuiSvgIcon-root {
+  color: #f39c12 !important;
+}
+
+.metric-card-blue .MuiSvgIcon-root {
+  color: #3498db !important;
+}
+
+.metric-card-teal .MuiSvgIcon-root {
+  color: #1abc9c !important;
+}
+
+/* Chart legend and axis labels should be dark but visible */
+.recharts-cartesian-axis-tick-value {
+  fill: #8b949e !important;
+}
+
+.recharts-legend-item-text {
+  color: #2c3e50 !important;
+}
+
+/* Trend indicators colors */
+.MuiSvgIcon-root[data-testid="TrendingUpIcon"] {
+  color: #27ae60 !important;
+}
+
+.MuiSvgIcon-root[data-testid="TrendingDownIcon"] {
+  color: #e74c3c !important;
+}
+
+/* Restore map controls and layers */
+.leaflet-control {
+  opacity: 1 !important;
+  background: white !important;
+}
+
+.leaflet-bar {
+  background: white !important;
+  border: 1px solid #ccc !important;
+}
+
+.leaflet-bar a {
+  background: white !important;
+  color: #333 !important;
+}
