@@ -47,7 +47,11 @@ app.use(compression());
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' ? 'https://fra-atlas.gov.in' : 'http://localhost:3000',
+  origin: process.env.NODE_ENV === 'production' ? [
+    'https://fra1-2cmv.vercel.app',
+    'https://fra1-2cmv-sahildharmameher812-7747s-projects.vercel.app',
+    'https://fra-atlas.gov.in'
+  ] : 'http://localhost:3000',
   credentials: true
 }));
 
