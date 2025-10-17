@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#2E7D32" />
     <meta name="description" content="FRA Atlas - AI-Powered Forest Rights Act Implementation Portal" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https: wss:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https: blob: http: *.tile.openstreetmap.org *.arcgisonline.com *.tile.opentopomap.org *.google.com *.gstatic.com cdnjs.cloudflare.com unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https: http: wss: ws:;">
     
     <title>FRA Atlas | Ministry of Tribal Affairs</title>
     
@@ -26,6 +26,28 @@
     />
     
     <style>
+      /* Critical Leaflet Map CSS - Must Load First */
+      .leaflet-container {
+        width: 100% !important;
+        height: 100% !important;
+        background: #ddd;
+        position: relative;
+        z-index: 1;
+      }
+      
+      .leaflet-tile-pane {
+        z-index: 200 !important;
+      }
+      
+      .leaflet-tile {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      
+      .leaflet-tile-container {
+        opacity: 1 !important;
+      }
+      
       /* Government Portal Loading Screen */
       .loading-screen {
         position: fixed;
