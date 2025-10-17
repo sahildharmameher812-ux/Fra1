@@ -416,26 +416,26 @@ const WebGISMaps = () => {
     {
       name: tFallback('mapView'),
       icon: <MapIcon />,
-      tileUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      attribution: '© OpenStreetMap contributors',
+      tileUrl: '/api/tiles/osm/{z}/{x}/{y}.png',
+      attribution: '© OpenStreetMap contributors (proxied)',
     },
     {
       name: tFallback('satelliteView'),
       icon: <Satellite />,
-      tileUrl: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      attribution: '© Esri — Source: Esri, Maxar, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community',
+      tileUrl: '/api/tiles/esri/{z}/{x}/{y}.jpg',
+      attribution: '© Esri World Imagery (proxied)',
     },
     {
       name: tFallback('terrainView'),
       icon: <Terrain />,
-      tileUrl: 'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
-      attribution: 'Map data: © OpenStreetMap contributors, SRTM | Map style: © OpenTopoMap (CC-BY-SA)',
+      tileUrl: '/api/tiles/opentopo/{z}/{x}/{y}.png',
+      attribution: '© OpenTopoMap (proxied)',
     },
     {
       name: '3D DETAILED VIEW',
       icon: <Nature />,
-      tileUrl: 'https://mt1.google.com/vt/lyrs=y&z={z}&x={x}&y={y}',
-      attribution: '© Google Maps Hybrid | High-Resolution Satellite with Place Names',
+      tileUrl: '/api/tiles/google/y/{z}/{x}/{y}.png',
+      attribution: '© Google Hybrid (proxied)',
     },
   ];
 
