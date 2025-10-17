@@ -8,10 +8,10 @@
     },
     { "src": "api/*.js", "use": "@vercel/node" }
   ],
-  "routes": [
-    { "src": "/api/tiles/(.*)", "dest": "/api/tiles.js" },
-    { "src": "/static/(.*)", "dest": "/client/build/static/$1" },
-    { "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|json|woff|woff2|ttf|eot))", "dest": "/client/build/$1" },
-    { "src": "/(.*)", "dest": "/api/index.js" }
+  "rewrites": [
+    { "source": "/api/tiles/:match*", "destination": "/api/tiles.js" },
+    { "source": "/static/:match*", "destination": "/client/build/static/:match*" },
+    { "source": "/:all*(js|css|png|jpg|jpeg|gif|svg|ico|json|woff|woff2|ttf|eot)", "destination": "/client/build/:all*" },
+    { "source": "/(.*)", "destination": "/client/build/index.html" }
   ]
 }
