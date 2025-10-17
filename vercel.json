@@ -3,18 +3,11 @@
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxLambdaSize": "50mb"
-      }
+      "use": "@vercel/node"
     },
     {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "build",
-        "buildCommand": "CI=false npm run build"
-      }
+      "src": "client/build/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -27,22 +20,6 @@
       "dest": "/client/build/static/$1"
     },
     {
-      "src": "/manifest.json",
-      "dest": "/client/build/manifest.json"
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/client/build/favicon.ico"
-    },
-    {
-      "src": "/asset-manifest.json",
-      "dest": "/client/build/asset-manifest.json"
-    },
-    {
-      "src": "/robots.txt",
-      "dest": "/client/build/robots.txt"
-    },
-    {
       "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|map|json))",
       "dest": "/client/build/$1"
     },
@@ -51,7 +28,4 @@
       "dest": "/client/build/index.html"
     }
   ]
-  "env": {
-    "NODE_ENV": "production"
-  }
 }
