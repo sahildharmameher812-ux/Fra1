@@ -589,28 +589,6 @@ const WebGISMaps = () => {
             </Tooltip>
           </Box>
 
-          {/* Loading Overlay */}
-          {mapLoading && (
-            <Box sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              bgcolor: 'rgba(255,255,255,0.9)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 1001,
-              flexDirection: 'column',
-              gap: 2
-            }}>
-              <Typography variant="h6" sx={{ color: governmentColors.primaryBlue, fontWeight: 600 }}>
-                🗺️ Loading Interactive Map...
-              </Typography>
-              <LinearProgress sx={{ width: 200, height: 6, borderRadius: 3 }} />
-            </Box>
-          )}
           
           {/* Leaflet Map */}
           <MapContainer
@@ -625,6 +603,7 @@ const WebGISMaps = () => {
             zoomControl={true}
             whenReady={(map) => {
               setMapLoading(false);
+              // Ensure map fits within allocated container after any resize
               setTimeout(() => {
                 map.target.invalidateSize();
               }, 100);
@@ -640,16 +619,11 @@ const WebGISMaps = () => {
               minZoom={3}
               crossOrigin="anonymous"
               eventHandlers={{
-                loading: () => {
-                  console.log('🗺️ Tiles loading...');
-                },
                 load: () => {
-                  console.log('✅ Tiles loaded successfully');
                   setMapLoading(false);
                   setMapError(false);
                 },
                 tileerror: (error) => {
-                  console.error('❌ Tile loading error:', error);
                   setMapError(true);
                 },
               }}

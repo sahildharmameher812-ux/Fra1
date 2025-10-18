@@ -65,9 +65,6 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/datasets', express.static(path.join(__dirname, 'datasets')));
 
-// Serve static HTML files (including dashboard.html)
-app.use(express.static(path.join(__dirname)));
-
 // Legacy dashboard route (keep for backward compatibility)
 app.get('/dashboard.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'dashboard.html'));
@@ -175,12 +172,25 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
   });
 } else {
-  // In development, serve React app
-  app.use(express.static(path.join(__dirname, 'client/build')));
-  app.get('*', (req, res) => {
-    if (!req.path.startsWith('/api/') && req.path !== '/dashboard.html' && req.path !== '/legacy') {
-      res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    }
+  // In development, don't serve React app from backend (it runs on port 3000)
+  app.get('/', (req, res) => {
+    res.json({
+      message: 'FRA Atlas Backend API Server',
+      status: 'Running',
+      environment: process.env.NODE_ENV || 'development',
+      apiEndpoints: {
+        health: '/api/health',
+        auth: '/api/auth',
+        documents: '/api/documents',
+        gis: '/api/gis',
+        analytics: '/api/analytics',
+        satellite: '/api/satellite',
+        fraAtlas: '/api/fra-atlas',
+        chat: '/api/chat',
+        dashboard: '/dashboard.html'
+      },
+      frontend: 'http://localhost:3000'
+    });
   });
 }
 
